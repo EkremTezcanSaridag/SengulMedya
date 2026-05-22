@@ -61,6 +61,10 @@ body {
 
 }
 
+.navlist i {
+    margin-right: 5px;
+}
+
 .navlist a:after {
     content: '';
     width: 0;
@@ -77,36 +81,19 @@ body {
 
 .navlist a:hover:after {
     width: 60%;
-    color: var(--primary);
     transition: all 0.3s ease;
 
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.navlist a:hover {
+    color: var(--primary);
 }
+
+
 
 #logo {
     display: block;
-    max-height: 63px;
-    border-radius: 20px;
-}
-
-.logotext {
-    color: white;
-
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    font-family: 'Outfit', sans-serif;
-
-}
-
-.medyatext {
-    color: var(--primary);
-
-    letter-spacing: 1px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    max-height: 85px;
+    width: auto;
+    border-radius: 8px;
 }
