@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #c5a880;
+    /* Şampanya Altını (Zarif Vurgu Rengi) */
+    --bg-dark: #121212;
+    /* Derin Gece Siyahı (Premium Koyu Tema Arka Planı) */
+    --bg-light: #fcfaf7;
+    /* Sıcak Fildişi / Krem Rengi (Aydınlık Tema Arka Planı) */
+}
+
+header {
+    background-color: rgba(18, 18, 18, 0.75);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    /*en üstte gözüksün diye */
+
+    border-bottom: solid 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.navlist {
+    /* menü elemanlarını hizaladık */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    list-style-type: none;
+}
+
+body {
+    background-color: var(--bg-light);
+    padding-top: 80px;
+}
+
+.navlist a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    position: relative;
+
+}
+
+.navlist a:after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+
+
+}
+
+.navlist a:hover:after {
+    width: 60%;
+    color: var(--primary);
+    transition: all 0.3s ease;
+
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo {
+    display: block;
+    max-height: 63px;
+    border-radius: 20px;
+}
+
+.logotext {
+    color: white;
+
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-family: 'Outfit', sans-serif;
+
+}
+
+.medyatext {
+    color: var(--primary);
+
+    letter-spacing: 1px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+}
