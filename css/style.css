@@ -97,3 +97,126 @@ body {
     width: auto;
     border-radius: 8px;
 }
+
+
+
+.arrows {
+
+    z-index: 10;
+
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    cursor: pointer;
+}
+
+
+.arrows i {
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3); /* Biraz daha şeffaf */
+    backdrop-filter: blur(8px); /* Lüks cam efekti (Glassmorphism) */
+    -webkit-backdrop-filter: blur(8px);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s ease; /* Yumuşak geçiş */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.arrows i:hover {
+    background-color: var(--primary); /* Sitenin şampanya rengi */
+    color: var(--bg-dark); /* İkon rengi koyu siyah */
+    transform: scale(1.15); /* Üzerine gelince hafifçe büyüme */
+    border-color: var(--primary);
+    box-shadow: 0 5px 15px rgba(197, 168, 128, 0.5); /* Etrafa şampanya rengi parlama */
+}
+
+
+
+.slider {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.slider img {
+
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+
+}
+
+
+.slider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    width: 80%;
+}
+
+.slider-text h1 {
+    color: var(--primary);
+    /* Lüks şampanya rengi */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 3.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    margin-bottom: 15px;
+}
+
+.slider-text p {
+    font-size: 1.2rem;
+    font-family: 'Outfit', sans-serif;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    text-transform: none;
+    /* Paragrafın normal okuma düzeninde olması için */
+}
+
+.btn {
+    padding: 15px 35px;
+    border-radius: 30px;
+    /* Daha modern yuvarlak kenar */
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: var(--primary);
+    color: var(--bg-dark);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(197, 168, 128, 0.4);
+}
+
+.btn:hover {
+    background-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.5);
+}
