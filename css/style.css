@@ -164,6 +164,16 @@ body {
 }
 
 
+.sliderbtn_text {
+    text-decoration: none;
+    color: var(--bg-dark);
+    font-family: 'Outfit', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    font-size: 1rem;
+}
+
+
 .slider-text {
     position: absolute;
     top: 50%;
@@ -376,7 +386,8 @@ body {
 /* Hizmetler Bölümü Stilleri */
 .services-section {
     padding: 50px 5%;
-    background-color: var(--bg-dark); /* Koyu arka plan */
+    background-color: var(--bg-dark);
+    /* Koyu arka plan */
 }
 
 .services-grid {
@@ -388,11 +399,12 @@ body {
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.05); /* Cam efekti / Koyu tema */
+    background: rgba(255, 255, 255, 0.05);
+    /* Cam efekti / Koyu tema */
     padding: 40px 30px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: all 0.4s ease;
     border: 1px solid rgba(197, 168, 128, 0.1);
     display: flex;
@@ -593,8 +605,183 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* =======================================================
+   RESPONSİV TASARIM (DUYARLI TASARIM)
+   ======================================================= */
+
+/* MASAÜSTÜ (≥1025px) */
+@media (min-width: 1025px) {
+    .slider-text {
+        max-width: 800px;
+    }
+}
+
+/* TABLET (769px – 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 15px 3%;
+    }
+
+    .navlist {
+        gap: 15px;
+    }
+
+    .navlist a {
+        font-size: 0.75rem;
+        padding: 10px 10px;
+    }
+
+    .slider-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* MOBİL (≤768px) - Hamburger Menü Tasarımı */
 @media (max-width: 768px) {
+    header {
+        padding: 15px 5%;
+        background-color: rgba(18, 18, 18, 0.95);
+    }
+
+    #logo {
+        max-height: 45px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav.navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        flex-direction: column;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        border-top: none;
+    }
+
+    nav.navbar.active {
+        max-height: 500px;
+        padding: 20px 0;
+        border-top: 1px solid rgba(197, 168, 128, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .navlist {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .navlist a {
+        font-size: 1.1rem;
+        padding: 10px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navlist a:after {
+        display: none;
+    }
+
+    .navlist i {
+        margin-right: 8px;
+    }
+
+    body {
+        padding-top: 75px;
+    }
+
+    .slider-text {
+        width: 95%;
+    }
+
+    .slider-text h1 {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+
+    .slider-text p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .arrows {
+        padding: 5px;
+    }
+
+    .arrows i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-info p {
+        justify-content: center;
+    }
+
+    .contact-info i {
+        text-align: center;
+    }
+
+    .footer-map iframe {
+        height: 250px;
+    }
+
+    .page-header {
+        padding: 50px 5% 30px;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .contact-info-boxes {
+        flex-direction: column;
+    }
+
     .input-group {
         flex-direction: column;
+    }
+
+    .contact-form-container {
+        padding: 25px 15px;
+    }
+
+    .contact-form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
     }
 }

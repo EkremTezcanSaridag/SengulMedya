@@ -17,41 +17,11 @@ let imgsayac = 0;
 let resimslider
 
 
-sag_ok.addEventListener("click", function () {
-    clearInterval(resimslider);
-    if (imgsayac < images.length - 1) {
-
-        imgsayac += 1;
-        mainimg.src = images[imgsayac];
-    }
-    else {
-        imgsayac = 0;
-        mainimg.src = images[imgsayac];
-    }
-    slideinterval();
-})
-
-
-sol_ok.addEventListener("click", function () {
-    clearInterval(resimslider);
-    if (imgsayac > 0) {
-
-        imgsayac -= 1;
-        mainimg.src = images[imgsayac];
-    }
-    else {
-        imgsayac = images.length - 1;
-        mainimg.src = images[imgsayac];
-    }
-    slideinterval();
-
-})
-
-
-function slideinterval() {
-    resimslider = setInterval(function () {
-
+if (mainimg && sag_ok && sol_ok) {
+    sag_ok.addEventListener("click", function () {
+        clearInterval(resimslider);
         if (imgsayac < images.length - 1) {
+
             imgsayac += 1;
             mainimg.src = images[imgsayac];
         }
@@ -59,9 +29,61 @@ function slideinterval() {
             imgsayac = 0;
             mainimg.src = images[imgsayac];
         }
+        slideinterval();
+    })
 
 
-    }, 5000)
+    sol_ok.addEventListener("click", function () {
+        clearInterval(resimslider);
+        if (imgsayac > 0) {
+
+            imgsayac -= 1;
+            mainimg.src = images[imgsayac];
+        }
+        else {
+            imgsayac = images.length - 1;
+            mainimg.src = images[imgsayac];
+        }
+        slideinterval();
+
+    })
+
+
+    function slideinterval() {
+        resimslider = setInterval(function () {
+
+            if (imgsayac < images.length - 1) {
+                imgsayac += 1;
+                mainimg.src = images[imgsayac];
+            }
+            else {
+                imgsayac = 0;
+                mainimg.src = images[imgsayac];
+            }
+
+
+        }, 5000)
+    }
+
+    slideinterval();
 }
 
-slideinterval();
+// Hamburger Menu Logic
+const mobileMenu = document.getElementById('mobile-menu');
+const navbar = document.querySelector('.navbar');
+
+if(mobileMenu) {
+    mobileMenu.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+        
+        // Change icon to X when open
+        const icon = mobileMenu.querySelector('i');
+        if(navbar.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+        } else {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+}
