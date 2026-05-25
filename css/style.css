@@ -397,7 +397,8 @@ body {
 
 .ekipman {
     background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     min-height: 300px;
     padding: 35px 20px;
     border-radius: 15px;
@@ -711,7 +712,7 @@ body {
 @media (max-width: 768px) {
     header {
         padding: 15px 5%;
-        background-color: rgba(18, 18, 18, 0.95);
+        background-color: var(--bg-dark);
     }
 
     #logo {
@@ -963,8 +964,13 @@ body {
         text-align: center;
     }
 
+    .about-image {
+        margin-bottom: 30px;
+    }
+
     .about-experience {
         right: 50%;
+        bottom: -30px;
         transform: translateX(50%);
     }
 
