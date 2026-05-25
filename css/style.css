@@ -14,23 +14,19 @@
 }
 
 header {
-    background-color: rgba(18, 18, 18, 0.75);
+    background-color: var(--bg-dark); /* Şeffaflık kaldırıldı, tam solid yapıldı */
     width: 100%;
     height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    /*en üstte gözüksün diye */
-
-    border-bottom: solid 1px rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom: solid 1px rgba(197, 168, 128, 0.15); /* Altın rengi ince, şık bir çizgi eklendi */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .navlist {
@@ -356,16 +352,21 @@ body {
     min-height: 50vh;
     padding: 50px 5%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    background-color: var(--bg-dark);
 }
 
 .coming-soon {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
     border-radius: 15px;
-    border: 1px solid rgba(197, 168, 128, 0.2);
+    border: 1px solid rgba(197, 168, 128, 0.3);
+    text-align: center;
 }
 
 .coming-soon i {
@@ -381,6 +382,63 @@ body {
 
 .coming-soon p {
     color: #bbb;
+}
+
+
+.ekipmanlarimiz {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.ekipman {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    width: 280px;
+    min-height: 300px;
+    padding: 35px 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(197, 168, 128, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+.ekipman:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 35px rgba(197, 168, 128, 0.25);
+    background: linear-gradient(145deg, #222, #111);
+}
+
+.ekipman i {
+    font-size: 3.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+}
+
+.ekipman:hover i {
+    transform: scale(1.15);
+}
+
+.ekipman h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.ekipman p {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 /* Hizmetler Bölümü Stilleri */
@@ -642,6 +700,8 @@ body {
 
 .menu-toggle {
     display: none;
+    position: absolute;
+    right: 5%;
     color: white;
     font-size: 1.8rem;
     cursor: pointer;
@@ -783,5 +843,132 @@ body {
 
     .services-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* =======================================================
+   HAKKIMIZDA SAYFASI STİLLERİ
+   ======================================================= */
+.about-section {
+    padding: 60px 5%;
+    background-color: var(--bg-dark);
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.about-experience {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--primary);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    color: var(--bg-dark);
+    box-shadow: 0 10px 30px rgba(197, 168, 128, 0.3);
+}
+
+.about-experience h3 {
+    font-size: 2.5rem;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 5px;
+}
+
+.about-experience p {
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.about-text p {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.about-features {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(197, 168, 128, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateX(10px);
+    border-color: var(--primary);
+}
+
+.feature i {
+    font-size: 2.2rem;
+    color: var(--primary);
+}
+
+.feature h4 {
+    color: white;
+    margin-bottom: 5px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.feature p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Hakkımızda Responsive */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-experience {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .feature {
+        text-align: left;
     }
 }
