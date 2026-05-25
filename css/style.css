@@ -327,3 +327,274 @@ body {
     color: #888;
     font-size: 0.8rem;
 }
+
+/* Sayfa İçerik Stilleri */
+.page-header {
+    padding: 120px 5% 50px;
+    background-color: var(--bg-dark);
+    text-align: center;
+    color: white;
+}
+
+.page-header h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.page-content {
+    min-height: 50vh;
+    padding: 50px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.coming-soon {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 50px;
+    border-radius: 15px;
+    border: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.coming-soon i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.coming-soon h2 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.coming-soon p {
+    color: #bbb;
+}
+
+/* Hizmetler Bölümü Stilleri */
+.services-section {
+    padding: 50px 5%;
+    background-color: var(--bg-dark); /* Koyu arka plan */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05); /* Cam efekti / Koyu tema */
+    padding: 40px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(197, 168, 128, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(197, 168, 128, 0.2);
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(197, 168, 128, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    color: var(--primary);
+    font-size: 2rem;
+    transition: all 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+    background: var(--primary);
+    color: var(--bg-dark);
+    transform: rotateY(180deg);
+}
+
+.service-card h3 {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.service-card p {
+    color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 5px 15px rgba(197, 168, 128, 0.4);
+}
+
+.btn-solid {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: var(--bg-dark);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    border: 2px solid var(--primary);
+}
+
+.btn-solid:hover {
+    background: transparent;
+    color: var(--primary);
+    box-shadow: 0 5px 15px rgba(197, 168, 128, 0.4);
+}
+
+/* İletişim Sayfası Stilleri */
+.contact-section {
+    padding: 60px 5%;
+    background-color: var(--bg-dark);
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.contact-info-boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid rgba(197, 168, 128, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.info-box i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.info-box h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.info-box p {
+    color: #bbb;
+    margin-bottom: 5px;
+}
+
+.contact-form-container {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(197, 168, 128, 0.1);
+}
+
+.contact-form-container h2 {
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-family: 'Outfit', sans-serif;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 20px;
+}
+
+.input-group input {
+    flex: 1;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #888;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+    }
+}
