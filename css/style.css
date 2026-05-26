@@ -1212,3 +1212,122 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* =======================================================
+   FİYAT LİSTESİ (PRICING) BÖLÜMÜ STİLLERİ
+   ======================================================= */
+.pricing-section {
+    padding: 60px 5%;
+    background-color: var(--bg-dark); 
+    background-image: radial-gradient(circle at center, rgba(197, 168, 128, 0.05) 0%, transparent 70%);
+}
+
+.pricing-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #151515 0%, #0a0a0a 100%);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+    border-radius: 20px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px dashed rgba(197, 168, 128, 0.3);
+    padding-bottom: 30px;
+}
+
+.pricing-header h2 {
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.pricing-header h2 span {
+    color: var(--primary);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    font-family: 'Times New Roman', serif;
+}
+
+.pricing-header p {
+    color: #ccc;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.pricing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pricing-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.pricing-item:hover {
+    background: rgba(197, 168, 128, 0.05);
+}
+
+.pricing-item-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+}
+
+.pricing-item-left i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    width: 25px;
+    text-align: center;
+}
+
+.pricing-dots {
+    flex: 1;
+    border-bottom: 2px dotted rgba(197, 168, 128, 0.3);
+    margin: 0 20px;
+    position: relative;
+    top: -4px;
+}
+
+.pricing-price {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.15rem;
+    border: 1px solid var(--primary);
+    padding: 6px 18px;
+    border-radius: 20px;
+    background: rgba(197, 168, 128, 0.05);
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .pricing-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(197, 168, 128, 0.1);
+    }
+    .pricing-dots {
+        display: none;
+    }
+    .pricing-price {
+        align-self: flex-end;
+    }
+}
