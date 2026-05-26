@@ -68,13 +68,13 @@
 
                 <div class="contact-form-container">
                     <h2>Bize Mesaj Gönderin</h2>
-                    <form action="#" class="contact-form">
+                    <form action="https://formspree.io/f/BURAYA_KODUNU_YAZACAKSIN" method="POST" class="contact-form">
                         <div class="input-group">
-                            <input type="text" placeholder="Adınız Soyadınız" required>
-                            <input type="email" placeholder="E-Posta Adresiniz" required>
+                            <input type="text" name="Ad Soyad" placeholder="Adınız Soyadınız" required>
+                            <input type="email" name="E-Posta" placeholder="E-Posta Adresiniz" required>
                         </div>
-                        <input type="text" placeholder="Konu (Örn: Düğün Çekimi, Fiyat Bilgisi)" required>
-                        <textarea placeholder="Mesajınızı buraya detaylıca yazın..." rows="6" required></textarea>
+                        <input type="text" name="Konu" placeholder="Konu (Örn: Düğün Çekimi, Fiyat Bilgisi)" required>
+                        <textarea name="Mesaj" placeholder="Mesajınızı buraya detaylıca yazın..." rows="6" required></textarea>
                         <button type="submit" class="btn-solid"
                             style="width: 100%; border:none; padding: 15px; font-size: 1.1rem; cursor:pointer;">Mesajı
                             Gönder</button>
