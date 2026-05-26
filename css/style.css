@@ -734,7 +734,7 @@ body {
 
 /* MASAÜSTÜ (≥1025px) */
 @media (min-width: 1025px) {
-    .slider-text {
+    .hero-text-content {
         max-width: 800px;
     }
 }
@@ -754,12 +754,8 @@ body {
         padding: 10px 10px;
     }
 
-    .slider-text h1 {
+    .hero-title {
         font-size: 2.8rem;
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -837,17 +833,31 @@ body {
         padding-top: 75px;
     }
 
-    .slider-text {
-        width: 95%;
+    .hero-text-content {
+        width: 100%;
+        text-align: center;
+        align-items: center;
     }
 
-    .slider-text h1 {
+    .hero-title {
         font-size: 2.2rem;
         letter-spacing: 1px;
     }
 
-    .slider-text p {
+    .hero-desc {
         font-size: 1rem;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .btn {
