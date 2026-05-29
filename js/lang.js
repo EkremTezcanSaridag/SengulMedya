@@ -118,6 +118,10 @@ const translations = {
         "contact.form.email": "E-Posta Adresiniz",
         "contact.form.subject": "Konu (Örn: Düğün Çekimi, Fiyat Bilgisi)",
         "contact.form.msg": "Mesajınızı buraya detaylıca yazın...",
+        "contact.form.label.name": "Adınız Soyadınız",
+        "contact.form.label.email": "E-Posta Adresiniz",
+        "contact.form.label.subject": "Konu",
+        "contact.form.label.msg": "Mesajınız",
         "contact.form.btn": "Mesajı Gönder",
 
         // TEŞEKKÜRLER
@@ -243,6 +247,10 @@ const translations = {
         "contact.form.email": "Your E-Mail Address",
         "contact.form.subject": "Subject (e.g. Wedding Shoot, Pricing Info)",
         "contact.form.msg": "Write your message here in detail...",
+        "contact.form.label.name": "Your Full Name",
+        "contact.form.label.email": "Your E-Mail Address",
+        "contact.form.label.subject": "Subject",
+        "contact.form.label.msg": "Your Message",
         "contact.form.btn": "Send Message",
 
         // THANKS

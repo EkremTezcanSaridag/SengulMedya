@@ -8,7 +8,7 @@
     <meta name="description" content="Şengül Medya ile iletisime geçin. Düğün, nişan ve özel çekim talepleriniz için bize ulaşın. Niğde, Yeşilgölcük.">
     <meta property="og:title" content="İletişim — Şengül Medya">
     <meta property="og:description" content="Fotoğraf ve video çekim talepleriniz için bize ulaşın.">
-    <meta property="og:image" content="images/logos1.png">
+    <meta property="og:image" content="images/logo.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
@@ -24,7 +24,7 @@
 
         <div class="logo">
             <!--firma logomuz buraya-->
-            <img src="images/logos1.png" alt="Şengül Medya" id="logo">
+            <img src="images/logo.png" alt="Şengül Medya" id="logo">
         </div>
 
         <div class="header-right">
@@ -83,11 +83,23 @@
                     <h2 data-i18n="contact.form.title">Bize Mesaj Gönderin</h2>
                     <form action="https://formspree.io/f/mykvbndr" method="POST" class="contact-form">
                         <div class="input-group">
-                            <input type="text" name="Ad Soyad" data-i18n-placeholder="contact.form.name" placeholder="Adınız Soyadınız" required>
-                            <input type="email" name="E-Posta" data-i18n-placeholder="contact.form.email" placeholder="E-Posta Adresiniz" required>
+                            <div class="form-control">
+                                <label for="contact-name" data-i18n="contact.form.label.name">Adınız Soyadınız</label>
+                                <input type="text" id="contact-name" name="Ad Soyad" data-i18n-placeholder="contact.form.name" placeholder="Adınız Soyadınız" required>
+                            </div>
+                            <div class="form-control">
+                                <label for="contact-email" data-i18n="contact.form.label.email">E-Posta Adresiniz</label>
+                                <input type="email" id="contact-email" name="E-Posta" data-i18n-placeholder="contact.form.email" placeholder="E-Posta Adresiniz" required>
+                            </div>
                         </div>
-                        <input type="text" name="Konu" data-i18n-placeholder="contact.form.subject" placeholder="Konu (Örn: Düğün Çekimi, Fiyat Bilgisi)" required>
-                        <textarea name="Mesaj" data-i18n-placeholder="contact.form.msg" placeholder="Mesajınızı buraya detaylıca yazın..." rows="6" required></textarea>
+                        <div class="form-control">
+                            <label for="contact-subject" data-i18n="contact.form.label.subject">Konu</label>
+                            <input type="text" id="contact-subject" name="Konu" data-i18n-placeholder="contact.form.subject" placeholder="Konu (Örn: Düğün Çekimi, Fiyat Bilgisi)" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="contact-message" data-i18n="contact.form.label.msg">Mesajınız</label>
+                            <textarea id="contact-message" name="Mesaj" data-i18n-placeholder="contact.form.msg" placeholder="Mesajınızı buraya detaylıca yazın..." rows="6" required></textarea>
+                        </div>
                         <button type="submit" class="btn-solid"
                             style="width: 100%; border:none; padding: 15px; font-size: 1.1rem; cursor:pointer;" data-i18n="contact.form.btn">Mesajı
                             Gönder</button>
