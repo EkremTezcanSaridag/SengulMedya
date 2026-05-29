@@ -1,39 +1,134 @@
-// Hamburger Menu Logic
+// =====================================================
+// Şengül Medya — App JS
+// =====================================================
+
+// ─── Mobil Drawer Menü ────────────────────────────────
 const mobileMenu = document.getElementById('mobile-menu');
-const navbar = document.querySelector('.navbar');
+const navbar     = document.querySelector('.navbar');
 
-if (mobileMenu) {
-    mobileMenu.addEventListener('click', () => {
-        navbar.classList.toggle('active');
+// Sayfa yüklendiğinde overlay + drawer header enjekte et
+document.addEventListener('DOMContentLoaded', () => {
 
-        // Change icon to X when open
-        const icon = mobileMenu.querySelector('i');
-        if (navbar.classList.contains('active')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-xmark');
-        } else {
-            icon.classList.remove('fa-xmark');
-            icon.classList.add('fa-bars');
-        }
+    // Overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'nav-overlay';
+    document.body.appendChild(overlay);
+
+    // Drawer içine başlık + dil butonu + kapat butonu ekle
+    if (navbar) {
+        const drawerHeader = document.createElement('div');
+        drawerHeader.className = 'drawer-header';
+        drawerHeader.innerHTML = `
+            <span class="drawer-brand">MENÜ</span>
+            <div class="drawer-actions">
+                <button id="lang-toggle-btn-drawer" aria-label="Dil Değiştir">
+                    <i class="fa-solid fa-globe"></i>
+                    <span class="drawer-lang-label">EN</span>
+                </button>
+                <button id="drawer-close" aria-label="Kapat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        `;
+        navbar.insertBefore(drawerHeader, navbar.firstChild);
+
+        // Drawer footer — sosyal ikonlar
+        const drawerFooter = document.createElement('div');
+        drawerFooter.className = 'drawer-footer';
+        drawerFooter.innerHTML = `
+            <p class="drawer-footer-label">Bizi takip edin</p>
+            <div class="drawer-socials">
+                <a href="https://www.instagram.com/sengulmedya/" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        `;
+        navbar.appendChild(drawerFooter);
+    }
+
+    // ─── Açma / Kapama ─────────────────────────────────
+    function openDrawer() {
+        navbar.classList.add('active');
+        document.getElementById('nav-overlay').classList.add('active');
+        document.body.classList.add('drawer-open');
+    }
+
+    function closeDrawer() {
+        navbar.classList.remove('active');
+        document.getElementById('nav-overlay').classList.remove('active');
+        document.body.classList.remove('drawer-open');
+    }
+
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            if (navbar.classList.contains('active')) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+        });
+    }
+
+    // Overlay tıklaması
+    document.getElementById('nav-overlay').addEventListener('click', closeDrawer);
+
+    // X butonu
+    const closeBtn = document.getElementById('drawer-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+
+    // Escape tuşu
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeDrawer();
     });
+
+    // Nav link tıklamasında drawer kapat
+    if (navbar) {
+        navbar.querySelectorAll('.navlist a').forEach(link => {
+            link.addEventListener('click', closeDrawer);
+        });
+    }
+
+    // ─── Drawer içi dil butonu ─────────────────────────
+    const drawerLangBtn = document.getElementById('lang-toggle-btn-drawer');
+    if (drawerLangBtn) {
+        // Başlangıç durumunu ayarla
+        updateDrawerLangBtn();
+
+        drawerLangBtn.addEventListener('click', () => {
+            // lang.js'deki toggleLanguage fonksiyonunu çağır
+            if (typeof toggleLanguage === 'function') {
+                toggleLanguage();
+            }
+            updateDrawerLangBtn();
+        });
+    }
+});
+
+function updateDrawerLangBtn() {
+    const drawerLangBtn = document.getElementById('lang-toggle-btn-drawer');
+    if (!drawerLangBtn) return;
+    const current = localStorage.getItem('sengul-lang') || 'tr';
+    const label = drawerLangBtn.querySelector('.drawer-lang-label');
+    if (label) label.textContent = current === 'tr' ? 'EN' : 'TR';
+    drawerLangBtn.title = current === 'tr' ? 'Switch to English' : 'Türkçeye geç';
 }
 
-// Formspree AJAX İletişim Formu Mantığı
+// ─── İletişim Formu AJAX ──────────────────────────────
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Varsayılan Formspree yönlendirmesini engelle
-        
-        // Butonu "Gönderiliyor..." yap ve tekrar tıklanmasını engelle
+        e.preventDefault();
+
         const btn = contactForm.querySelector('button[type="submit"]');
         const originalText = btn.innerHTML;
         btn.innerHTML = "Gönderiliyor... <i class='fa-solid fa-spinner fa-spin' style='margin-left:8px'></i>";
         btn.disabled = true;
 
         const data = new FormData(contactForm);
-        
+
         try {
-            // Form verilerini Formspree'ye arkaplanda gönder
             const response = await fetch(contactForm.action, {
                 method: contactForm.method,
                 body: data,
@@ -41,7 +136,6 @@ if (contactForm) {
             });
 
             if (response.ok) {
-                // Gönderim başarılıysa kendi tasarladığımız Onay sayfasına yönlendir
                 window.location.href = "tesekkurler.html";
             } else {
                 alert("Mesaj gönderilirken bir hata oluştu. Lütfen bilgileri kontrol edin.");

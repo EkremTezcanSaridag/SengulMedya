@@ -745,139 +745,404 @@ body {
         padding: 15px 3%;
     }
 
+    .header-right {
+        gap: 12px;
+    }
+
     .navlist {
-        gap: 15px;
+        gap: 8px;
     }
 
     .navlist a {
-        font-size: 0.75rem;
-        padding: 10px 10px;
+        font-size: 0.72rem;
+        padding: 8px 8px;
+        letter-spacing: 1px;
+    }
+
+    #lang-toggle-btn {
+        padding: 7px 13px;
+        font-size: 0.72rem;
     }
 
     .hero-title {
         font-size: 2.8rem;
     }
+
+    .hero-desc {
+        font-size: 1rem;
+    }
 }
 
 .menu-toggle {
     display: none;
-    position: absolute;
-    right: 5%;
     color: white;
     font-size: 1.8rem;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(197,168,128,0.2);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-/* MOBİL (≤768px) - Hamburger Menü Tasarımı */
+.menu-toggle:hover {
+    background: rgba(197,168,128,0.15);
+    border-color: rgba(197,168,128,0.5);
+}
+
+/* =======================================================
+   OVERLAY & DRAWER — GLOBAL (tüm ekranlarda hidden, mobilde aktif)
+   ======================================================= */
+
+/* Body scroll kilidi */
+body.drawer-open {
+    overflow: hidden;
+}
+
+/* Karartma overlay */
+#nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+#nav-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Drawer header (JS ile enjekte ediliyor) */
+.drawer-header {
+    display: none; /* masaüstünde gizli */
+}
+
+/* Drawer footer (JS ile enjekte ediliyor) */
+.drawer-footer {
+    display: none;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MOBİL (≤768px) — Premium Drawer Tasarımı
+   ═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
+    /* ── Header ────────────────────────────────────────── */
     header {
-        padding: 15px 5%;
+        padding: 0 5%;
+        height: 62px;
         background-color: var(--bg-dark);
     }
 
     #logo {
-        max-height: 45px;
+        max-height: 40px;
     }
 
+    /* Sadece hamburger görünür, dil butonu gizlenir */
+    .header-right {
+        gap: 0;
+    }
+
+    #lang-toggle-btn {
+        display: none !important;
+    }
+
+    /* Hamburger — minimal, temiz */
     .menu-toggle {
-        display: block;
+        display: flex;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(197, 168, 128, 0.08);
+        border: 1px solid rgba(197, 168, 128, 0.25);
+        font-size: 1.1rem;
     }
 
+    /* ── Drawer (sağdan kayan panel) ───────────────────── */
     nav.navbar {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(18, 18, 18, 0.98);
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
+        position: fixed;
+        top: 0;
+        right: -110%;           /* başta ekran dışında */
+        width: min(320px, 85vw);
+        height: 100dvh;
+        background: linear-gradient(160deg, #0d0d0d 0%, #111111 100%);
+        border-left: 1px solid rgba(197, 168, 128, 0.18);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7);
+        z-index: 1000;
         flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: none;
         padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-        border-top: none;
+        transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     nav.navbar.active {
-        max-height: 500px;
-        padding: 20px 0;
-        border-top: 1px solid rgba(197, 168, 128, 0.2);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        right: 0;
+        padding: 0;
+        border-top: none;
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.7);
     }
 
+    /* ── Drawer header (JS enjeksiyonu) ────────────────── */
+    .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 22px;
+        border-bottom: 1px solid rgba(197, 168, 128, 0.12);
+        background: rgba(197, 168, 128, 0.04);
+        flex-shrink: 0;
+    }
+
+    .drawer-brand {
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: var(--primary);
+        opacity: 0.8;
+    }
+
+    .drawer-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Drawer dil butonu */
+    #lang-toggle-btn-drawer {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(197, 168, 128, 0.1);
+        border: 1px solid rgba(197, 168, 128, 0.3);
+        color: var(--primary);
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    #lang-toggle-btn-drawer:hover {
+        background: var(--primary);
+        color: var(--bg-dark);
+    }
+
+    /* Drawer kapat butonu */
+    #drawer-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: #aaa;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    #drawer-close:hover {
+        background: rgba(255, 80, 80, 0.15);
+        border-color: rgba(255, 80, 80, 0.4);
+        color: #ff6b6b;
+    }
+
+    /* ── Nav linkleri ──────────────────────────────────── */
     .navlist {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         width: 100%;
-        gap: 20px;
+        gap: 0;
+        padding: 12px 0;
+    }
+
+    .navlist li {
+        width: 100%;
     }
 
     .navlist a {
-        font-size: 1.1rem;
-        padding: 10px;
-        display: block;
-        width: 100%;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 0.9rem;
+        padding: 16px 24px;
+        text-align: left;
+        color: rgba(255, 255, 255, 0.85);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        transition: all 0.22s ease;
+        letter-spacing: 1.5px;
+    }
+
+    .navlist a:hover,
+    .navlist a:active {
+        background: rgba(197, 168, 128, 0.07);
+        color: var(--primary);
+        padding-left: 30px;
+    }
+
+    .navlist a i {
+        width: 20px;
+        font-size: 0.9rem;
+        color: var(--primary);
+        opacity: 0.8;
+        flex-shrink: 0;
     }
 
     .navlist a:after {
         display: none;
     }
 
-    .navlist i {
-        margin-right: 8px;
+    /* ── Drawer footer (JS enjeksiyonu) ────────────────── */
+    .drawer-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: auto;
+        padding: 24px 22px;
+        border-top: 1px solid rgba(197, 168, 128, 0.12);
+        flex-shrink: 0;
     }
 
+    .drawer-footer-label {
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 2.5px;
+        color: #555;
+        text-transform: uppercase;
+    }
+
+    .drawer-socials {
+        display: flex;
+        gap: 14px;
+    }
+
+    .drawer-socials a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(197, 168, 128, 0.08);
+        border: 1px solid rgba(197, 168, 128, 0.2);
+        color: var(--primary);
+        font-size: 0.95rem;
+        transition: all 0.25s ease;
+        text-decoration: none;
+    }
+
+    .drawer-socials a:hover {
+        background: var(--primary);
+        color: var(--bg-dark);
+        transform: translateY(-2px);
+    }
+
+    /* ── Body ──────────────────────────────────────────── */
     body {
-        padding-top: 75px;
+        padding-top: 62px;
+    }
+
+    /* ── Hero ──────────────────────────────────────────── */
+    .hero {
+        padding: 50px 5% 60px;
+        min-height: calc(100dvh - 62px);
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 35px;
     }
 
     .hero-text-content {
         width: 100%;
         text-align: center;
         align-items: center;
+        order: 1;
+    }
+
+    .hero-image-content {
+        order: 2;
     }
 
     .hero-title {
-        font-size: 2.2rem;
-        letter-spacing: 1px;
+        font-size: 2rem;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-tagline {
+        font-size: 0.78rem;
+        letter-spacing: 2.5px;
     }
 
     .hero-desc {
-        font-size: 1rem;
+        font-size: 0.95rem;
         text-align: center;
+    }
+
+    .hero-divider {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-buttons {
         flex-direction: column;
         width: 100%;
-        gap: 15px;
+        gap: 12px;
+        align-items: center;
     }
 
     .hero-buttons .btn {
         width: 100%;
+        max-width: 300px;
         justify-content: center;
     }
 
+    .hero-image-wrapper {
+        max-width: 100%;
+    }
+
+    /* ── Butonlar ──────────────────────────────────────── */
     .btn {
-        padding: 12px 25px;
-        font-size: 0.9rem;
+        padding: 13px 24px;
+        font-size: 0.85rem;
     }
 
-    .arrows {
-        padding: 5px;
-    }
-
-    .arrows i {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-    }
-
+    /* ── Footer ────────────────────────────────────────── */
     .footer-container {
         flex-direction: column;
         text-align: center;
+        gap: 30px;
+    }
+
+    .footer-info,
+    .footer-map {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .footer-desc {
+        max-width: 100%;
     }
 
     .contact-info p {
@@ -888,20 +1153,44 @@ body {
         text-align: center;
     }
 
-    .footer-map iframe {
-        height: 250px;
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
     }
 
+    .social-icons a {
+        margin-right: 0;
+    }
+
+    .footer-map iframe {
+        height: 200px;
+    }
+
+    /* ── Page header ───────────────────────────────────── */
     .page-header {
-        padding: 50px 5% 30px;
+        padding: 40px 5% 25px;
     }
 
     .page-header h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+
+    .page-header p {
+        font-size: 0.9rem;
+    }
+
+    /* ── Contact ───────────────────────────────────────── */
+    .contact-section {
+        padding: 40px 5%;
     }
 
     .contact-info-boxes {
         flex-direction: column;
+    }
+
+    .info-box {
+        min-width: unset;
     }
 
     .input-group {
@@ -913,13 +1202,62 @@ body {
     }
 
     .contact-form-container h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
+    /* ── Services / Pricing ────────────────────────────── */
     .services-grid {
         grid-template-columns: 1fr;
     }
+
+    .pricing-section {
+        padding: 30px 5%;
+    }
+
+    .pricing-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ── About ─────────────────────────────────────────── */
+    .about-section {
+        padding: 40px 5%;
+    }
+
+    .about-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .about-experience {
+        right: 10px;
+        bottom: -15px;
+        padding: 15px;
+    }
+
+    .about-experience h3 {
+        font-size: 1.8rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+
+    .feature {
+        gap: 12px;
+    }
+
+    /* ── Arrows ────────────────────────────────────────── */
+    .arrows {
+        padding: 5px;
+    }
+
+    .arrows i {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
 }
+
 
 /* =======================================================
    HAKKIMIZDA SAYFASI STİLLERİ
@@ -1363,3 +1701,60 @@ body {
     font-weight: 700;
     font-size: 1.1rem;
 }
+
+/* =======================================================
+   DİL DEĞİŞTİRME BUTONU (TR / EN)
+   ======================================================= */
+
+#lang-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(197, 168, 128, 0.1);
+    border: 1px solid rgba(197, 168, 128, 0.4);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#lang-toggle-btn:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(197, 168, 128, 0.35);
+    transform: translateY(-2px);
+}
+
+#lang-toggle-btn i {
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+#lang-toggle-btn:hover i {
+    transform: rotate(20deg);
+}
+
+/* Butonun header içindeki konumu */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Mobilde buton küçültülür */
+@media (max-width: 768px) {
+    #lang-toggle-btn {
+        padding: 7px 12px;
+        font-size: 0.75rem;
+    }
+}
+
