@@ -4,10 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Şengül Medya</title>
+    <title>Hakkımızda — Şengül Medya</title>
+    <meta name="description" content="20 yıllık tecrübesiyle Niğde merkezli Şengül Medya ekibini tanıyın. Düğün, nişan ve sinematik video çekimlerinde uzman prodüksiyon ajansı.">
+    <meta property="og:title" content="Hakkımızda — Şengül Medya">
+    <meta property="og:description" content="20 yıllık tecrübesiyle Şengül Medya ekibini tanıyın.">
+    <meta property="og:image" content="images/logos1.png">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-    <link rel="icon" href="images/favicon.png">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -19,19 +27,24 @@
             <img src="images/logos1.png" alt="Şengül Medya" id="logo">
         </div>
 
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+        <div class="header-right">
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav class="navbar">
+                <ul class="navlist">
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Anasayfa</span></a></li>
+                    <li><a href="hizmetlerimiz.html"><i class="fa-solid fa-camera"></i> <span data-i18n="nav.services">Hizmetlerimiz</span></a></li>
+                    <li><a href="galeri.html"><i class="fa-solid fa-image"></i> <span data-i18n="nav.gallery">Galeri</span></a></li>
+                    <li><a href="hakkimizda.html"><i class="fa-solid fa-user"></i> <span data-i18n="nav.about">Hakkımızda</span></a></li>
+                    <li><a href="iletisim.html"><i class="fa-solid fa-phone"></i> <span data-i18n="nav.contact">İletişim</span></a></li>
+                </ul>
+            </nav>
 
-        <nav class="navbar">
-            <ul class="navlist">
-                <li><a href="index.html"><i class="fa-solid fa-house"></i> Anasayfa</a></li>
-                <li><a href="hizmetlerimiz.html"><i class="fa-solid fa-camera"></i> Hizmetlerimiz</a></li>
-                <li><a href="galeri.html"><i class="fa-solid fa-image"></i> Galeri</a></li>
-                <li><a href="hakkimizda.html"><i class="fa-solid fa-user"></i> Hakkımızda</a></li>
-                <li><a href="iletisim.html"><i class="fa-solid fa-phone"></i> İletişim</a></li>
-            </ul>
-        </nav>
+            <button id="lang-toggle-btn" aria-label="Dil Değiştir / Change Language">
+                <i class="fa-solid fa-globe"></i> 🇬🇧 English
+            </button>
+        </div>
 
     </header>
 
@@ -39,23 +52,23 @@
 
     <main>
         <section class="page-header">
-            <h1>Hakkımızda</h1>
-            <p>Şengül Medya'nın Hikayesi</p>
+            <h1 data-i18n="about.title">Hakkımızda</h1>
+            <p data-i18n="about.subtitle">Şengül Medya'nın Hikayesi</p>
         </section>
         <section class="about-section">
             <div class="about-container">
                 <div class="about-image">
                     <img src="firmaAnasayfa.jpg" alt="Şengül Medya Ekibimiz">
                     <div class="about-experience">
-                        <h3>20+</h3>
-                        <p>Yıllık Tecrübe</p>
+                        <h3 data-i18n="about.exp.years">20+</h3>
+                        <p data-i18n="about.exp.label">Yıllık Tecrübe</p>
                     </div>
                 </div>
                 <div class="about-text">
-                    <h2>Biz Kimiz?</h2>
-                    <p>Niğde merkezli <strong>Şengül Medya</strong>, Okan Şengül tarafından kurulan ve en özel
+                    <h2 data-i18n="about.who">Biz Kimiz?</h2>
+                    <p data-i18n="about.p1">Niğde merkezli <strong>Şengül Medya</strong>, Okan Şengül tarafından kurulan ve en özel
                         anlarınızı sanata dönüştürmeyi misyon edinmiş profesyonel bir prodüksiyon ajansıdır.</p>
-                    <p>Düğün, nişan, reklam ve havadan drone çekimleri alanında 20 yılı aşkın tecrübemizle sadece
+                    <p data-i18n="about.p2">Düğün, nişan, reklam ve havadan drone çekimleri alanında 20 yılı aşkın tecrübemizle sadece
                         deklanşöre basmıyor; duygularınızı, heyecanınızı ve markanızın ruhunu sinematik bir vizyonla
                         ölümsüzleştiriyoruz.</p>
 
@@ -63,15 +76,15 @@
                         <div class="feature">
                             <i class="fa-solid fa-camera-retro"></i>
                             <div>
-                                <h4>Profesyonel Çekim</h4>
-                                <p>En yüksek kalitede sinematik sonuçlar.</p>
+                                <h4 data-i18n="about.feat1.title">Profesyonel Çekim</h4>
+                                <p data-i18n="about.feat1.desc">En yüksek kalitede sinematik sonuçlar.</p>
                             </div>
                         </div>
                         <div class="feature">
                             <i class="fa-solid fa-clapperboard"></i>
                             <div>
-                                <h4>Sinematik Kurgu</h4>
-                                <p>Sıradan videoları filme dönüştüren dokunuşlar.</p>
+                                <h4 data-i18n="about.feat2.title">Sinematik Kurgu</h4>
+                                <p data-i18n="about.feat2.desc">Sıradan videoları filme dönüştüren dokunuşlar.</p>
                             </div>
                         </div>
                     </div>
@@ -84,7 +97,7 @@
         <div class="footer-container">
             <div class="footer-info">
                 <h2>Şengül Medya</h2>
-                <p class="footer-desc">Profesyonel fotoğrafçılık ve videografi hizmetleriyle en özel anlarınızı sanata
+                <p class="footer-desc" data-i18n="footer.desc">Profesyonel fotoğrafçılık ve videografi hizmetleriyle en özel anlarınızı sanata
                     dönüştürüyoruz. Kadrajımızda yaşama yer açın.</p>
 
                 <div class="contact-info">
@@ -102,7 +115,7 @@
             </div>
 
             <div class="footer-map">
-                <h3>Konumumuz</h3>
+                <h3 data-i18n="footer.location">Konumumuz</h3>
                 <iframe src="https://maps.google.com/maps?q=38.228377,34.775056&hl=tr&z=19&output=embed" width="100%"
                     height="180" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -110,7 +123,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 Şengül Medya. Tüm hakları saklıdır.</p>
+            <p data-i18n="footer.rights">© 2026 Şengül Medya. Tüm hakları saklıdır.</p>
         </div>
     </footer>
 
@@ -118,6 +131,7 @@
 
 
     <script src="js/app.js"></script>
+    <script src="js/lang.js"></script>
 
 </body>
 

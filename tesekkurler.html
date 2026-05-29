@@ -134,18 +134,23 @@
                 <img src="images/logos1.png" alt="Şengül Medya" id="logo">
             </a>
         </div>
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
+        <div class="header-right">
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav class="navbar">
+                <ul class="navlist">
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Anasayfa</span></a></li>
+                    <li><a href="hizmetlerimiz.html"><i class="fa-solid fa-camera"></i> <span data-i18n="nav.services">Hizmetlerimiz</span></a></li>
+                    <li><a href="galeri.html"><i class="fa-solid fa-image"></i> <span data-i18n="nav.gallery">Galeri</span></a></li>
+                    <li><a href="hakkimizda.html"><i class="fa-solid fa-user"></i> <span data-i18n="nav.about">Hakkımızda</span></a></li>
+                    <li><a href="iletisim.html"><i class="fa-solid fa-phone"></i> <span data-i18n="nav.contact">İletişim</span></a></li>
+                </ul>
+            </nav>
+            <button id="lang-toggle-btn" aria-label="Dil Değiştir / Change Language">
+                <i class="fa-solid fa-globe"></i> 🇬🇧 English
+            </button>
         </div>
-        <nav class="navbar">
-            <ul class="navlist">
-                <li><a href="index.html"><i class="fa-solid fa-house"></i> Anasayfa</a></li>
-                <li><a href="hizmetlerimiz.html"><i class="fa-solid fa-camera"></i> Hizmetlerimiz</a></li>
-                <li><a href="galeri.html"><i class="fa-solid fa-image"></i> Galeri</a></li>
-                <li><a href="hakkimizda.html"><i class="fa-solid fa-user"></i> Hakkımızda</a></li>
-                <li><a href="iletisim.html"><i class="fa-solid fa-phone"></i> İletişim</a></li>
-            </ul>
-        </nav>
     </header>
 
     <main>
@@ -183,7 +188,7 @@
             </div>
 
             <div class="footer-map">
-                <h3>Konumumuz</h3>
+                <h3 data-i18n="footer.location">Konumumuz</h3>
                 <iframe src="https://maps.google.com/maps?q=38.228377,34.775056&hl=tr&z=19&output=embed" width="100%"
                     height="180" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -191,9 +196,10 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 Şengül Medya. Tüm hakları saklıdır.</p>
+            <p data-i18n="footer.rights">© 2026 Şengül Medya. Tüm hakları saklıdır.</p>
         </div>
     </footer>
     <script src="js/app.js"></script>
+    <script src="js/lang.js"></script>
 </body>
 </html>
