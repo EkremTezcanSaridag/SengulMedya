@@ -1495,8 +1495,21 @@ body.drawer-open {
 
 @media (max-width: 768px) {
     .video-wrapper {
-        padding-bottom: 125%; /* Generous portrait card ratio to allow Google Drive iframe's video to expand to full horizontal width! */
+        padding-bottom: 80%; /* Sleek aspect ratio on mobile: large enough to fit full video width without excessive black letterbox bars! */
     }
+}
+
+/* Hide Google Drive's ugly pop-out/open-in-new-tab button (↗) globally */
+.video-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 55px;
+    background: #000;
+    z-index: 4; /* Sits on top of the iframe but below the interactive .video-cover (z-index: 5) */
+    pointer-events: auto; /* Intercepts and blocks clicks on the hidden button */
 }
 
 .video-wrapper iframe {
