@@ -1490,6 +1490,13 @@ body.drawer-open {
     height: 0;
     width: 100%;
     background: #000;
+    transition: padding-bottom 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .video-wrapper {
+        padding-bottom: 70%; /* Enlarge video area significantly on mobile for a spacious, premium player presence */
+    }
 }
 
 .video-wrapper iframe {
