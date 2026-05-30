@@ -2,6 +2,12 @@
 
 Bu proje, bir üniversite final ödevi kapsamında geliştirilmiş olan gerçek bir küçük işletme ve profesyonel prodüksiyon web sitesidir.
 
+## 🎓 Öğrenci Geliştirici Bilgileri
+*   **Adı Soyadı:** Ekrem Tezcan Sarıdağ
+*   **Öğrenci Numarası:** 20252045015
+
+---
+
 ## Proje Tanımı ve Müşteri Bilgisi
 *   **Müşteri:** Okan Şengül & İlkay Cafer Şengül (Şengül Medya)
 *   **Sektör:** Profesyonel Fotoğrafçılık, Videografi ve Sinematik Prodüksiyon
