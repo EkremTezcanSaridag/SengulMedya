@@ -1501,6 +1501,88 @@ body.drawer-open {
     border: none;
 }
 
+/* Premium Video Cover for smooth Mobile Swiping & Tap-to-Play */
+.video-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1b1b1b 0%, #0d0d0d 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.video-cover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(197, 168, 128, 0.05) 0%, transparent 80%);
+    pointer-events: none;
+}
+
+.video-cover:hover {
+    background: linear-gradient(135deg, #222 0%, #111 100%);
+}
+
+.play-btn-circle {
+    width: 65px;
+    height: 65px;
+    background: rgba(197, 168, 128, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #070707;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 8px 25px rgba(197, 168, 128, 0.35);
+    z-index: 6;
+    padding-left: 4px; /* Centering visual fix for play icon */
+}
+
+.video-cover:hover .play-btn-circle {
+    transform: scale(1.1);
+    background: var(--primary);
+    box-shadow: 0 10px 30px rgba(197, 168, 128, 0.55);
+    color: #000;
+}
+
+.video-cover-title {
+    color: #eaeaea;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    z-index: 6;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0 15px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .play-btn-circle {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .video-cover-title {
+        font-size: 0.95rem;
+    }
+}
+
 .video-card h3 {
     color: #eee;
     font-size: 1.15rem;

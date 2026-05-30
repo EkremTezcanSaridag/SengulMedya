@@ -90,6 +90,11 @@ const translations = {
         // GALERİ
         "gallery.title":   "Galeri ve Örnek Çalışmalarımız",
         "gallery.subtitle": "Sanata dönüştürdüğümüz en özel anlara göz atın",
+        "gallery.video1": "Şengül Medya — Sinematik Düğün Hikayesi",
+        "gallery.video2": "Şengül Medya — Profesyonel Dış Çekim",
+        "gallery.video3": "Şengül Medya — Gelin Çıkarma & Eğlence",
+        "gallery.video4": "Şengül Medya — Drone ile Havadan Çekimler",
+        "gallery.video5": "Şengül Medya — Reklam & Mekan Tanıtımı",
 
         // HAKKIMIZDA
         "about.title":     "Hakkımızda",
@@ -219,6 +224,11 @@ const translations = {
         // GALLERY
         "gallery.title":   "Gallery & Sample Works",
         "gallery.subtitle": "Take a look at the most special moments we have turned into art",
+        "gallery.video1": "Şengül Medya — Cinematic Wedding Story",
+        "gallery.video2": "Şengül Medya — Professional Outdoor Shoot",
+        "gallery.video3": "Şengül Medya — Bridal Exit & Fun Moments",
+        "gallery.video4": "Şengül Medya — Aerial Drone Footage",
+        "gallery.video5": "Şengül Medya — Promo & Commercial Shoots",
 
         // ABOUT
         "about.title":     "About Us",
