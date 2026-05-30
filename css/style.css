@@ -1501,6 +1501,13 @@ body.drawer-open {
     border: none;
 }
 
+/* Fix mobile video compositor freeze by removing 3D transforms when playing */
+.swiper-slide.is-playing {
+    transform: none !important;
+    transition: none !important;
+    z-index: 10 !important;
+}
+
 /* Premium Video Cover for smooth Mobile Swiping & Tap-to-Play */
 .video-cover {
     position: absolute;

@@ -135,7 +135,7 @@
 
                 <div class="contact-info">
                     <p><i class="fa-solid fa-phone"></i> <strong>Okan Şengül:</strong> 0542 785 66 88</p>
-                    <p><i class="fa-solid fa-phone"></i> <strong>İlkay Cafer Şengül:</strong> 0541 462 04 22</p>
+                    <p><i class="fa-brands fa-instagram"></i> <strong>İlkay Cafer Şengül:</strong> <a href="https://www.instagram.com/snglilkay/" target="_blank" style="color: var(--primary); text-decoration: none;">@snglilkay</a></p>
                     <p><i class="fa-solid fa-phone"></i> <strong>Habip Şengül:</strong> 0543 362 09 94</p>
                     <p><i class="fa-solid fa-location-dot"></i> <span>Niğde, Yeşilgölcük, Türkiye</span></p>
                 </div>
@@ -170,18 +170,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var swiper = new Swiper(".mySwiper", {
-                effect: "coverflow",
+            var isMobile = window.innerWidth < 768;
+            var swiperOptions = {
                 grabCursor: true,
                 centeredSlides: true,
                 slidesPerView: "auto",
-                coverflowEffect: {
-                    rotate: 15,
-                    stretch: 0,
-                    depth: 150,
-                    modifier: 1,
-                    slideShadows: true,
-                },
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
@@ -193,7 +186,24 @@
                 keyboard: {
                     enabled: true,
                 }
-            });
+            };
+
+            if (isMobile) {
+                // Flat, lightweight slide effect on mobile for 100% video rendering stability
+                swiperOptions.effect = "slide";
+            } else {
+                // Gorgeous Coverflow effect on desktop
+                swiperOptions.effect = "coverflow";
+                swiperOptions.coverflowEffect = {
+                    rotate: 15,
+                    stretch: 0,
+                    depth: 150,
+                    modifier: 1,
+                    slideShadows: true,
+                };
+            }
+
+            var swiper = new Swiper(".mySwiper", swiperOptions);
 
             // Dynamic video iframe loader helper
             function bindCoverClick(cover) {
@@ -203,11 +213,14 @@
                     var slide = wrapper.parentElement;
                     var videoUrl = slide.getAttribute('data-video-url');
                     
-                    // Recreate iframe and play automatically
+                    // Add is-playing class to slide to instantly flatten any 3D transforms for flawless video compositing
+                    slide.classList.add('is-playing');
+                    
+                    // Recreate iframe and play
                     var iframe = document.createElement('iframe');
-                    iframe.setAttribute('src', videoUrl + "?autoplay=1&mute=0");
+                    iframe.setAttribute('src', videoUrl);
                     iframe.setAttribute('frameborder', '0');
-                    iframe.setAttribute('allow', 'autoplay; encrypted-media');
+                    iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
                     iframe.setAttribute('allowfullscreen', 'true');
                     
                     // Clear placeholder cover and append iframe
@@ -222,6 +235,9 @@
             // Audio & visual cleanup: When slide changes, unload any active iframes to prevent overlapping audio
             swiper.on('slideChange', function() {
                 document.querySelectorAll('.swiper-slide').forEach(function(slide) {
+                    // Remove playing class
+                    slide.classList.remove('is-playing');
+                    
                     var wrapper = slide.querySelector('.video-wrapper');
                     if (wrapper && wrapper.querySelector('iframe')) {
                         var videoUrl = slide.getAttribute('data-video-url');
