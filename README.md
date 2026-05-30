@@ -18,12 +18,11 @@ Bu proje, bir üniversite final ödevi kapsamında geliştirilmiş olan gerçek 
     *   Yumuşak geçişli gölgelendirmeler, modern tipografi (**Outfit** yazı tipi) ve etkileşimli mikro-animasyonlar.
 *   **JavaScript (ES6) & Swiper JS:**
     *   **Çoklu Dil Desteği (TR/EN):** Sayfa yenilenmeden anında çalışan dinamik dil geçiş sistemi (`js/lang.js`).
-    *   **Akıllı Video Oynatıcı & Mobil Donanım İvmesi Çözümü:** Mobilde video oynatılırken yaşanan 3D transform kilitlenme sorununu çözen, oynatma anında transformları sıfırlayan `.is-playing` mekanizması.
     *   **Duyarlı Slider Efekti:** Masaüstünde göz alıcı 3D Swiper Coverflow efekti kullanılırken, mobilde kusursuz performans için otomatik olarak düz kaydırma (flat slide) moduna geçen akıllı mekanizma.
 *   **Entegrasyonlar & Araçlar:** 
     *   Google Analytics (Ziyaretçi ve kullanıcı davranışı takibi).
     *   Formspree (Doğrudan çalışan, spam korumalı aktif iletişim formu).
-    *   OpenCode ve Google Antigravity.
+    *   Google Antigravity.
 
 ---
 
