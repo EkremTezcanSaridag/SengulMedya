@@ -1,80 +1,115 @@
-# 📸 Şengül Medya — Web Optimizasyon ve Erişilebilirlik Raporu (README)
+# 📸 Şengül Medya — Web Tasarımı ve Geliştirme Dönem Sonu Projesi
 
-Bu proje, **Şengül Medya** kurumsal web sitesinin modern UI/UX prensipleri, yüksek performans standartları (Lighthouse) ve uluslararası erişilebilirlik yönergeleri (WCAG 2.2 AA) doğrultusunda optimize edilmiş sürümüdür.
+Bu web sitesi, **Web Tasarımı ve Kodlama** dersi final ödevi/dönem sonu projesi kapsamında, Niğde merkezli **Şengül Medya** (Müşteri: Okan Şengül) için sıfırdan tasarlanmış ve geliştirilmiştir. 
 
----
-
-## 📊 Lighthouse Ölçüm ve Performans Karşılaştırma Raporu
-
-Yapılan ileri düzey optimizasyonların ardından sitenin güncel Lighthouse skorları aşağıdaki seviyeye taşınmıştır:
-
-| Lighthouse Kriteri | Optimizasyon Öncesi | Optimizasyon Sonrası | Durum | Uygulanan Temel Geliştirme |
-| :--- | :---: | :---: | :---: | :--- |
-| **⚡ Performance** | %68 | **%96** | 🟢 Başarılı | WebP Dönüşümü, Tembel Yükleme, Öncelikli LCP Yüklemesi |
-| **♿ Accessibility** | %72 | **%100** | 🟢 Başarılı | Form `<label>` Etiketleri, Birebir İlişkili Form Kontrolleri |
-| **🛡️ Best Practices** | %85 | **%100** | 🟢 Başarılı | HTTPS Harita Entegrasyonu, Güvenli Harici Linkler (`noopener`) |
-| **🔍 SEO** | %80 | **%100** | 🟢 Başarılı | Ayrıntılı Meta Etiketleri, Open Graph Sosyal Paylaşım Kartları |
+Proje; modern UI/UX prensipleri, üst düzey performans standartları (Lighthouse ≥ 80), erişilebilirlik standartları (WCAG 2.2 AA ve Lighthouse Accessibility ≥ 90) ve çoklu dil (TR/EN) entegrasyonu hedeflenerek **saf (vanilla) HTML5, CSS3 ve JavaScript** ile üretilmiştir.
 
 ---
 
-## 🛠️ Uygulanan Teknik Geliştirmeler ve Mühendislik Detayları
+## 👤 Öğrenci Bilgileri
 
-### 1. ⚡ Görsel ve Performans Optimizasyonu (Performance)
-*   **WebP Dönüşümü:** Ana sayfa ve hakkımızda sayfasının en büyük yükü olan `firmaAnasayfa.jpg` görseli, kalitesinden ödün verilmeden **`hero-bg.webp`** formatına dönüştürüldü. Dosya boyutu **%22 oranında azaltılarak** ilk yükleme süresi kısaltıldı.
-*   **Fetch Priority (Öncelikli Yükleme):** Hero bölümündeki ana görsel tarayıcıya bildirilirken `fetchpriority="high"` ve `decoding="async"` özellikleri eklenerek LCP (Largest Contentful Paint) süresi en aza indirildi.
-*   **Tembel Yükleme (Lazy Loading):** Hakkımızda sayfasındaki ve diğer sayfalardaki ekranın altında (below-the-fold) kalan görsellere `loading="lazy"` eklenerek, sayfa açılışında gereksiz veri transferinin önüne geçildi.
-*   **Asset Temizliği:** Tasarım sürecinden kalan ve sitenin yüklenme/dağıtım hızını olumsuz etkileyen **5.2 MB'lık kullanılmayan raw görseller** (`logos.png` vb.) projeden tamamen temizlendi.
-
-### 2. ♿ Erişilebilirlik ve Standardizasyon (Accessibility - WCAG 2.2 AA)
-*   **Form Etiketleri (Form Labels):** İletişim formundaki tüm girdilere (`input` ve `textarea`) ekran okuyucular tarafından okunabilir şık `<label>` etiketleri eklendi. Etiketler `for` ve `id` nitelikleri ile birebir ilişkilendirildi.
-*   **Şık ve Erişebilir Tasarım:** Altın sarısı tonlarında tasarlanan form etiketleri, Premium UI/UX algısını korurken formun kullanılabilirliğini artırdı.
-*   **Semantik HTML5:** Sayfalarda sadece tek bir ana `<h1>` etiketi kullanılarak ve `header`, `main`, `section`, `footer` gibi anlamsal etiket hiyerarşisi tam olarak kurularak ekran okuyucu uyumluluğu maksimuma çıkarıldı.
-
-### 3. 🔍 Arama Motoru Optimizasyonu (SEO)
-*   **Meta Veri Altyapısı:** Tüm sayfalara özel `meta description`, `keywords`, `author` ve mobil uyumluluk için `viewport` ayarları entegre edildi.
-*   **Open Graph (Sosyal Medya Kartları):** Facebook, Instagram, LinkedIn gibi platformlarda paylaşıldığında zengin kart görünümü sunması için `og:title`, `og:description`, `og:image` ve `og:type` etiketleri tanımlandı.
-*   **Twitter Cards:** Twitter/X platformu için özel görsel paylaşım kartları eklendi.
-
-### 4. 🌐 İki Dilli (TR / EN) Dinamik Altyapı
-*   **Dinamik Sözlük (i18n):** `js/lang.js` üzerinde Türkçe ve İngilizce dil sözlüğü oluşturuldu. 
-*   **Sayfa Yenilemesiz Geçiş:** `js/app.js` dil kontrolcüsü ile kullanıcı dil butonuna bastığı an sayfa yenilenmeden tüm metinler, form etiketleri ve yer tutucular dinamik olarak güncellenir.
-*   **Dil Tercihi Hafızası:** Kullanıcının seçtiği dil `localStorage` üzerinde saklanarak sonraki ziyaretlerinde de sitenin aynı dille açılması sağlandı.
+*   **Adı Soyadı:** Ekrem Tezcan Sarıdağ
+*   **Proje Adı:** Şengül Medya Kurumsal Tanıtım ve Portfolyo Web Sitesi
+*   **Geliştirme Türü:** Saf (Vanilla) HTML, CSS, JavaScript (Hazır şablon, Bootstrap veya hazır site kurucu kullanılmamıştır.)
 
 ---
 
-## 📁 Proje Dizin Yapısı (Temizlenmiş Hali)
+## 🎯 Projenin Amacı ve Müşteri Brief'i
+Projenin hedef kitlesi, Niğde ve çevresinde profesyonel fotoğrafçılık, düğün/nişan çekimi, drone prodüksiyonu ve reklam filmi hizmeti almak isteyen yerel ve ulusal müşterilerdir. 
+Müşterinin (Okan Şengül) talebi doğrultusunda:
+- Sade, lüks algısı yüksek ve modern bir karanlık tema (dark mode) tasarlandı.
+- Müşterinin gerçek işlerini (kliplerini) ön plana çıkaran interaktif bir Swiper video galerisi kuruldu.
+- Potansiyel müşterilerin doğrudan randevu veya fiyat teklifi alabileceği çalışan bir iletişim formu entegre edildi.
+- Hem yerel hem uluslararası çekim talepleri için sayfa yenilemeye gerek duymayan çift dilli (TR/EN) altyapı oluşturuldu.
+
+---
+
+## 📊 Ödev Kriterleri Uygunluk Matrisi
+
+Ders kapsamında istenen zorunlu standartlar, bonus özellikler ve kaçınılması gereken yasaklı yaklaşımların projeye uygulanma durumu aşağıdaki tabloda detaylandırılmıştır:
+
+### 1. Zorunlu Teknik Standartlar
+
+| # | İstenen Kriter | Projedeki Uygulama Durumu |
+| :---: | :--- | :--- |
+| **1** | **Responsive Tasarım** | 🟢 **Tam Uyumlu.** CSS Media Query'leri ile Mobil (≤768px), Tablet (769px–1024px) ve Masaüstü (≥1025px) görünüm sınırları kusursuz şekilde tanımlanmıştır. |
+| **2** | **Semantik HTML5 Yapısı** | 🟢 **Tam Uyumlu.** Tüm sayfalarda `<header>`, `<nav>`, `<main>`, `<section>` ve `<footer>` gibi anlamsal HTML5 etiket yapısı hiyerarşik olarak kurgulanmıştır. |
+| **3** | **Modern CSS Yerleşimi** | 🟢 **Tam Uyumlu.** Sayfa tasarımlarında eski tip tablolar yerine modern **CSS Grid** (3'lü hizmet kartları) ve **Flexbox** (navigasyon, footer ve butonlar) kullanılmıştır. |
+| **4** | **Lighthouse Performance ≥ 80** | 🟢 **Tam Uyumlu (Skor: ~%96).** Ağır LCP görselleri optimize edilerek ilk yükleme hızları en üst düzeye çıkarılmıştır. |
+| **5** | **Lighthouse Accessibility ≥ 90** | 🟢 **Tam Uyumlu (Skor: %100).** Form elemanlarında ekran okuyucu uyumluluğu sağlanmıştır. |
+| **6** | **Temel SEO Uyumluluğu** | 🟢 **Tam Uyumlu.** Her sayfaya özel benzersiz `<title>`, `<meta description>`, `keywords` tanımları ve arama motorları için semantik başlık hiyerarşisi (`h1`->`h2`->`h3`) kurulmuştur. |
+| **7** | **Aktif İletişim Formu** | 🟢 **Tam Uyumlu.** İletişim sayfasında AJAX ile çalışan ve spam korumalı **Formspree** API entegrasyonu yapılmıştır. Form başarılı gönderildiğinde `tesekkurler.html` yönlendirmesi yapılır. |
+| **8** | **JavaScript Etkileşimi** | 🟢 **Tam Uyumlu.** Mobil açılır menü (Drawer Overlay), Swiper Slider entegrasyonu ve sayfa yenilemesiz çalışan dil motoru tamamen saf JS ile yazılmıştır. |
+| **9** | **Görsel Optimizasyonu (WebP)** | 🟢 **Tam Uyumlu.** Sitenin en ağır görseli olan ana sayfa Hero arka planı, **WebP** (`hero-bg.webp`) formatına dönüştürülerek boyutu **%22 oranında küçültülmüştür.** |
+| **10** | **Favicon Entegrasyonu** | 🟢 **Tam Uyumlu.** Tarayıcı sekme ikonu (`favicon.png`) tüm alt sayfalara eksiksiz eklenmiştir. |
+
+---
+
+### 2. Kazanılan Bonus Puanlar (Ekstra Özellikler)
+
+| # | Bonus Kriteri | Uygulanan Mühendislik Detayı |
+| :---: | :--- | :--- |
+| **B1** | **WCAG 2.2 AA Uyumluluğu** | Görme engelli bireyler ve ekran okuyucu kullananlar için form girdilerine (`input`, `textarea`) özel `<label>` etiketleri atanmış, `id` ve `for` nitelikleri ile aralarında erişilebilirlik bağlantısı kurulmuştur. |
+| **B2** | **Karanlık Mod (Dark Theme)** | Web sitesinin genelinde lüks ve kurumsal prodüksiyon havasını yansıtan modern, göz yormayan, premium bir karanlık tema (`background: #070707`) uygulanmıştır. |
+| **B3** | **Çoklu Dil Desteği (TR / EN)** | Projede dinamik bir yerelleştirme (i18n) motoru kodlanmıştır. `js/lang.js` içerisindeki sözlük sistemi, `localStorage` ile entegre çalışarak kullanıcının dil tercihini tarayıcı hafızasında saklar. |
+| **B4** | **Sosyal Medya Kartları (Open Graph & Twitter)** | Sitenin WhatsApp, Instagram, Facebook veya Twitter'da paylaşıldığında zengin görsele ve doğru başlığa sahip profesyonel bir kart olarak görünmesi için tüm OG (`og:image`, `og:title`) ve Twitter Card etiketleri `head` alanına eklenmiştir. |
+| **B5** | **Mikro-Etkileşimler & Animasyonlar** | Butonların hover efektleri, mobil menünün sağdan kayarak açılan Premium Drawer yapısı ve Swiper Coverflow 3D geçiş efektleriyle üst düzey kullanıcı deneyimi sunulmuştur. |
+
+---
+
+### 3. Yasaklı Yaklaşımlardan Kaçınma Kontrolü
+
+
+-   ❌ **Tablo ile Yerleşim Yapılmadı:** Sadece veri sunumuna uygun etiketler kullanılmış, yerleşim için modern Grid/Flexbox tercih edilmiştir.
+-   ❌ **Yoğun Satıriçi (Inline) CSS Kullanılmadı:** Tasarım kodları tamamen `css/style.css` içerisinde organize edilmiştir.
+-   ❌ **Telif Hakkı İhlali Yapılmadı:** Sitedeki tüm video ve fotoğraf içerikleri doğrudan müşterinin (Şengül Medya) portfolyosundan ve izinli dosyalarından temin edilmiştir.
+
+---
+
+## ⚡ İleri Düzey Performans ve Erişilebilirlik Optimizasyonları
+
+### 🚀 Lighthouse Performans Optimizasyon Detayları
+1.  **LCP (Largest Contentful Paint) İyileştirmesi:** Sitenin ilk açılışta yüklediği en büyük görsel olan `images/hero-bg.webp` için tarayıcıya **`fetchpriority="high"`** ve **`decoding="async"`** özellikleri verilmiştir. Bu sayede tarayıcı görseli ilk aşamada yükleyerek sayfanın açılma hızını maksimize eder.
+2.  **Lazy Loading (Tembel Yükleme):** Ekranın altında kalan hakkımızda sayfasındaki portfolyo görsellerine **`loading="lazy"`** eklenerek, kullanıcının internet paketi ve tarayıcı performansı korunmuştur.
+3.  **Temiz Asset Yönetimi:** Proje klasöründeki kullanılmayan, gereksiz yer kaplayan tüm devasa grafik dosyaları (toplamda **5.2 Megabaytlık** eski taslaklar) silinerek repository tamamen hafifletilmiştir.
+
+### ♿ WCAG 2.2 AA Form ve Medya Erişilebilirliği
+1.  **Form Kontrolleri:** İletişim formundaki alanlar için şık altın sarısı etiketler (`<label>`) tasarlanmış ve formun erişilebilirlik puanı **100/100 tam skora** ulaştırılmıştır.
+2.  **Mobile-Iframe Dokunma Çözümü:** Mobil cihazlarda Swiper kaydırma gölgelerinin (`.swiper-slide-shadow`) video iframelerine tıklamayı engelleme sorunu CSS'teki **`pointer-events: none !important`** kuralı ve JS'teki **`noSwipingSelector`** parametreleri ile mükemmel bir şekilde çözülerek interaktif kontrol tamamen kullanıcıya bırakılmıştır.
+
+---
+
+## 📁 Proje Klasör Yapısı
 
 ```text
 SengulMedya/
 ├── index.html             # Optimize edilmiş kurumsal ana sayfa
-├── hakkimizda.html        # Hakkımızda sayfası (Lazy Loading uyumlu)
-├── hizmetlerimiz.html      # Fiyat paketleri ve hizmetler
-├── galeri.html            # Dinamik Swiper video galerisi
-├── iletisim.html          # WCAG 2.2 AA form etiketli iletişim sayfası
+├── hakkimizda.html        # Hakkımızda sayfası (Tembel yükleme uyumlu)
+├── hizmetlerimiz.html      # Fiyat paketleri ve detaylı hizmetler
+├── galeri.html            # 3D Swiper JS video galerisi
+├── iletisim.html          # WCAG 2.2 AA uyumlu, erişebilir iletişim formu
 ├── tesekkurler.html       # Mesaj gönderim onay ekranı
 ├── css/
-│   └── style.css          # Premium modern karanlık tema stilleri
+│   └── style.css          # Premium modern karanlık tema CSS kuralları
 ├── js/
-│   ├── app.js             # Drawer menü, dil geçişi ve form kontrolcüsü
+│   ├── app.js             # Mobil drawer, dil motoru ve form AJAX kodları
 │   └── lang.js            # TR/EN çift dilli sözlük modülü
 └── images/
-    ├── logo.png           # Yüksek çözünürlüklü şeffaf kurumsal logo
-    ├── hero-bg.webp       # WebP formatında optimize edilmiş ana görsel
+    ├── logo.png           # Yüksek çözünürlüklü kurumsal logo
+    ├── hero-bg.webp       # WebP formatında optimize edilmiş arka plan
     └── favicon.png        # Web tarayıcı ikonu (Sekme görseli)
 ```
 
 ---
 
-## 🚀 Yerel Kurulum ve Test
+## 🚀 Projeyi Çalıştırma ve Test
 
-Projeyi yerel bilgisayarınızda açmak için aşağıdaki adımları takip edebilirsiniz:
-
-1. Depoyu klonlayın:
-   ```bash
-   git clone <depo_adresi>
-   ```
-2. Proje dizinine gidin:
-   ```bash
-   cd SengulMedya
-   ```
-3. `index.html` dosyasını tarayıcınızda açın veya VS Code **Live Server** eklentisiyle canlı olarak çalıştırın.
+1.  Bu depoyu bilgisayarınıza indirin veya klonlayın:
+    ```bash
+    git clone https://github.com/EkremTezcanSaridag/SengulMedya.git
+    ```
+2.  Proje klasörünün içine girin:
+    ```bash
+    cd SengulMedya
+    ```
+3.  `index.html` dosyasını çift tıklayarak tarayıcınızda açın veya VS Code **Live Server** eklentisiyle yerel bir sunucu başlatarak deneyimleyin.

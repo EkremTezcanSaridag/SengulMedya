@@ -1459,6 +1459,15 @@ body.drawer-open {
     background: #000;
 }
 
+/* Swiper gölgelerinin video tıklamalarını engellemesini önler */
+.swiper-slide-shadow,
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right,
+.swiper-slide-shadow-top,
+.swiper-slide-shadow-bottom {
+    pointer-events: none !important;
+}
+
 @media (max-width: 768px) {
     .swiper-slide {
         width: 95%;
