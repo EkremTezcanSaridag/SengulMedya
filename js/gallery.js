@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Dynamic video iframe loader helper
+    // Dynamic video loader helper
     function bindCoverClick(cover) {
         cover.addEventListener('click', function (e) {
             e.preventDefault();
@@ -32,27 +32,66 @@ document.addEventListener('DOMContentLoaded', function () {
             var slide = wrapper.parentElement;
             var videoUrl = slide.getAttribute('data-video-url');
 
-            // Recreate iframe and play automatically
-            var iframe = document.createElement('iframe');
-            iframe.setAttribute('src', videoUrl + "?autoplay=1&mute=1&muted=1");
-            iframe.setAttribute('frameborder', '0');
-            iframe.setAttribute('allow', 'autoplay; encrypted-media');
-            iframe.setAttribute('allowfullscreen', 'true');
+            var videoId = "";
+            var isGoogleDrive = videoUrl.includes("drive.google.com");
+            if (isGoogleDrive) {
+                var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                if (match && match[1]) {
+                    videoId = match[1];
+                }
+            }
 
-            // Clear placeholder cover and append iframe
-            wrapper.innerHTML = '';
-            wrapper.appendChild(iframe);
+            if (isGoogleDrive && videoId) {
+                // Create HTML5 video element with muted, autoplay, loop and no controls
+                var videoEl = document.createElement('video');
+                videoEl.setAttribute('autoplay', 'true');
+                videoEl.setAttribute('muted', 'true');
+                videoEl.setAttribute('loop', 'true');
+                videoEl.setAttribute('playsinline', 'true');
+                videoEl.style.width = '100%';
+                videoEl.style.height = '100%';
+                videoEl.style.position = 'absolute';
+                videoEl.style.top = '0';
+                videoEl.style.left = '0';
+                videoEl.style.objectFit = 'cover';
+                videoEl.style.pointerEvents = 'none'; // Absolutely no clicks/touches can interact with it
+
+                // Make sure DOM muted property is set programmatically (required by browsers)
+                videoEl.muted = true;
+
+                var sourceEl = document.createElement('source');
+                sourceEl.setAttribute('src', 'https://drive.google.com/uc?export=download&id=' + videoId);
+                sourceEl.setAttribute('type', 'video/mp4');
+                videoEl.appendChild(sourceEl);
+
+                wrapper.innerHTML = '';
+                wrapper.appendChild(videoEl);
+                videoEl.play().catch(function(err) {
+                    console.log("Autoplay blocked or error: ", err);
+                });
+            } else {
+                // Fallback to iframe if it's not Google Drive
+                var iframe = document.createElement('iframe');
+                iframe.setAttribute('src', videoUrl + "?autoplay=1&mute=1&muted=1");
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'autoplay; encrypted-media');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.style.pointerEvents = 'none';
+
+                wrapper.innerHTML = '';
+                wrapper.appendChild(iframe);
+            }
         });
     }
 
     // Bind click listeners on initial page load
     document.querySelectorAll('.video-cover').forEach(bindCoverClick);
 
-    // Audio & visual cleanup: When slide changes, unload any active iframes to prevent overlapping audio
+    // Audio & visual cleanup: When slide changes, unload any active iframes or video tags
     swiper.on('slideChange', function () {
         document.querySelectorAll('.swiper-slide').forEach(function (slide) {
             var wrapper = slide.querySelector('.video-wrapper');
-            if (wrapper && wrapper.querySelector('iframe')) {
+            if (wrapper && (wrapper.querySelector('iframe') || wrapper.querySelector('video'))) {
                 var videoUrl = slide.getAttribute('data-video-url');
                 var videoId = videoUrl.includes('1FcMQ') ? 'gallery.video1' :
                     videoUrl.includes('15uFH') ? 'gallery.video2' :

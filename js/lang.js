@@ -142,6 +142,7 @@ const translations = {
         "drawer.title": "MENÜ",
         "drawer.follow": "Bizi takip edin",
         "brand.name": "Şengül Medya",
+        "contact.form.kvkk": "KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum.",
 
         // LANG BTN
         "lang.btn": "🇬🇧 English",
@@ -286,6 +287,7 @@ const translations = {
         "drawer.title": "MENU",
         "drawer.follow": "Follow us",
         "brand.name": "Sengul Media",
+        "contact.form.kvkk": "I have read and agree to the KVKK Clarification Text.",
 
         // LANG BTN
         "lang.btn": "🇹🇷 Türkçe",
