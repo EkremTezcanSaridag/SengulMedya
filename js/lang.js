@@ -51,6 +51,7 @@ const translations = {
         // FOOTER
         "footer.desc": "Profesyonel fotoğrafçılık ve videografi hizmetleriyle en özel anlarınızı sanata dönüştürüyoruz. Kadrajımızda yaşama yer açın.",
         "footer.location": "Konumumuz",
+        "footer.quickmenu": "Hızlı Menü",
         "footer.rights": "© 2026 Şengül Medya. Tüm hakları saklıdır.",
 
         // HİZMETLERİMİZ - Page header
@@ -185,6 +186,7 @@ const translations = {
         // FOOTER
         "footer.desc": "We transform your most special moments into art with professional photography and videography services. Make room for life in our frame.",
         "footer.location": "Our Location",
+        "footer.quickmenu": "Quick Menu",
         "footer.rights": "© 2026 Şengül Medya. All rights reserved.",
 
         // HİZMETLERİMİZ

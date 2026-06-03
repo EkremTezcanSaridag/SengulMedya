@@ -64,8 +64,8 @@
             <p data-i18n="gallery.subtitle">Sanata dönüştürdüğümüz en özel anlara göz atın</p>
         </section>
 
-        <section class="page-content" style="padding-top: 20px;">
-            <div class="gallery-category" style="max-width: 1000px; margin: 0 auto 50px;">
+        <section class="page-content gallery-page-content">
+            <div class="gallery-category gallery-category-custom">
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <!-- Video Slayt 1 -->
@@ -130,8 +130,8 @@
                         </div>
                     </div>
                     <!-- Swiper Navigasyon Butonları -->
-                    <div class="swiper-button-next" style="color: var(--primary);"></div>
-                    <div class="swiper-button-prev" style="color: var(--primary);"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
@@ -149,8 +149,7 @@
                 <div class="contact-info">
                     <p><i class="fa-solid fa-phone"></i> <strong>Okan Şengül:</strong> 0542 785 66 88</p>
                     <p><i class="fa-brands fa-instagram"></i> <strong>İlkay Cafer Şengül:</strong> <a
-                            href="https://www.instagram.com/snglilkay/" target="_blank"
-                            style="color: var(--primary); text-decoration: none;">@snglilkay</a></p>
+                            href="https://www.instagram.com/snglilkay/" target="_blank">@snglilkay</a></p>
                     <p><i class="fa-solid fa-phone"></i> <strong>Habip Şengül:</strong> 0543 362 09 94</p>
                     <p><i class="fa-solid fa-location-dot"></i> <span>Niğde, Yeşilgölcük, Türkiye</span></p>
                 </div>
@@ -162,10 +161,21 @@
                 </div>
             </div>
 
+            <div class="footer-nav">
+                <h3 data-i18n="footer.quickmenu">Hızlı Menü</h3>
+                <ul>
+                    <li><a href="index.html" data-i18n="nav.home">Anasayfa</a></li>
+                    <li><a href="hizmetlerimiz.html" data-i18n="nav.services">Hizmetlerimiz</a></li>
+                    <li><a href="galeri.html" data-i18n="nav.gallery">Galeri</a></li>
+                    <li><a href="hakkimizda.html" data-i18n="nav.about">Hakkımızda</a></li>
+                    <li><a href="iletisim.html" data-i18n="nav.contact">İletişim</a></li>
+                </ul>
+            </div>
+
             <div class="footer-map">
                 <h3 data-i18n="footer.location">Konumumuz</h3>
                 <iframe src="https://maps.google.com/maps?q=38.228377,34.775056&hl=tr&z=19&output=embed" width="100%"
-                    height="180" style="border:0;" allowfullscreen="" loading="lazy"
+                    height="180" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
@@ -183,95 +193,7 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var swiper = new Swiper(".mySwiper", {
-                effect: "coverflow",
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: "auto",
-                coverflowEffect: {
-                    rotate: 15,
-                    stretch: 0,
-                    depth: 150,
-                    modifier: 1,
-                    slideShadows: true,
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-                keyboard: {
-                    enabled: true,
-                }
-            });
-
-            // Dynamic video iframe loader helper
-            function bindCoverClick(cover) {
-                cover.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    var wrapper = this.parentElement;
-                    var slide = wrapper.parentElement;
-                    var videoUrl = slide.getAttribute('data-video-url');
-
-                    // Recreate iframe and play automatically
-                    var iframe = document.createElement('iframe');
-                    iframe.setAttribute('src', videoUrl + "?autoplay=1&mute=0");
-                    iframe.setAttribute('frameborder', '0');
-                    iframe.setAttribute('allow', 'autoplay; encrypted-media');
-                    iframe.setAttribute('allowfullscreen', 'true');
-
-                    // Clear placeholder cover and append iframe
-                    wrapper.innerHTML = '';
-                    wrapper.appendChild(iframe);
-                });
-            }
-
-            // Bind click listeners on initial page load
-            document.querySelectorAll('.video-cover').forEach(bindCoverClick);
-
-            // Audio & visual cleanup: When slide changes, unload any active iframes to prevent overlapping audio
-            swiper.on('slideChange', function () {
-                document.querySelectorAll('.swiper-slide').forEach(function (slide) {
-                    var wrapper = slide.querySelector('.video-wrapper');
-                    if (wrapper && wrapper.querySelector('iframe')) {
-                        var videoUrl = slide.getAttribute('data-video-url');
-                        var videoId = videoUrl.includes('1FcMQ') ? 'gallery.video1' :
-                            videoUrl.includes('15uFH') ? 'gallery.video2' :
-                                videoUrl.includes('Vi9ph') ? 'gallery.video3' :
-                                    videoUrl.includes('8jtx8') ? 'gallery.video4' : 'gallery.video5';
-
-                        var titleText = videoId === 'gallery.video1' ? 'Şengül Medya — Sinematik Düğün Hikayesi' :
-                            videoId === 'gallery.video2' ? 'Şengül Medya — Profesyonel Dış Çekim' :
-                                videoId === 'gallery.video3' ? 'Şengül Medya — Gelin Çıkarma & Eğlence' :
-                                    videoId === 'gallery.video4' ? 'Şengül Medya — Drone ile Havadan Çekimler' : 'Şengül Medya — Reklam & Mekan Tanıtımı';
-
-                        // Restore cover overlay dynamically
-                        wrapper.innerHTML = `
-                            <div class="video-cover">
-                                <div class="play-btn-circle">
-                                    <i class="fa-solid fa-play"></i>
-                                </div>
-                                <span class="video-cover-title" data-i18n="${videoId}">${titleText}</span>
-                            </div>
-                        `;
-
-                        // Re-bind the click event to the newly generated cover
-                        bindCoverClick(wrapper.querySelector('.video-cover'));
-                    }
-                });
-
-                // Re-apply translations to ensure language stays consistent on dynamic recreation
-                if (typeof applyTranslations === 'function' && typeof getCurrentLang === 'function') {
-                    applyTranslations(getCurrentLang());
-                }
-            });
-        });
-    </script>
+    <script src="js/gallery.js"></script>
 </body>
 
 

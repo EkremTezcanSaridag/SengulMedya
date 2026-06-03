@@ -7,125 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="icon" href="images/favicon.png">
-    <style>
-        .success-page-wrapper {
-            min-height: 75vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--bg-dark);
-            padding: 40px 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Arkaplandaki hafif ışıltı */
-        .success-page-wrapper::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            filter: blur(150px);
-            opacity: 0.12;
-            z-index: -1;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .success-card {
-            background: linear-gradient(145deg, #161616, #0a0a0a);
-            border: 1px solid rgba(197, 168, 128, 0.15);
-            border-radius: 24px;
-            padding: 60px 40px;
-            text-align: center;
-            max-width: 450px;
-            width: 100%;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255,255,255,0.05);
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .icon-wrapper {
-            width: 90px;
-            height: 90px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            box-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
-        }
-
-        .icon-wrapper i {
-            font-size: 3.2rem;
-            color: #10B981; /* Modern Başarı Yeşili */
-            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards;
-            opacity: 0;
-            transform: scale(0);
-        }
-
-        .success-card h1 {
-            color: white;
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .success-card p {
-            color: #aaa;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-
-        .success-card .btn-solid {
-            width: 100%;
-            display: block;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(197, 168, 128, 0.2);
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes scaleIn {
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* Mobil Duyarlılık (Responsive) */
-        @media (max-width: 480px) {
-            .success-card {
-                padding: 40px 25px;
-            }
-            .success-card h1 {
-                font-size: 1.6rem;
-            }
-            .success-card p {
-                font-size: 0.95rem;
-            }
-            .icon-wrapper {
-                width: 75px;
-                height: 75px;
-                margin-bottom: 25px;
-            }
-            .icon-wrapper i {
-                font-size: 2.6rem;
-            }
-            .success-page-wrapper {
-                padding: 20px 15px;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -161,7 +42,7 @@
                 </div>
                 <h1>Mesajınız İletildi</h1>
                 <p>Teşekkür ederiz. Göndermiş olduğunuz bilgiler ekibimize ulaştı. En kısa sürede sizinle iletişime geçeceğiz.</p>
-                <a href="index.html" class="btn btn-solid"><i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Anasayfaya Dön</a>
+                <a href="index.html" class="btn btn-solid"><i class="fa-solid fa-arrow-left mr-8"></i> Anasayfaya Dön</a>
             </div>
         </section>
     </main>
@@ -175,7 +56,7 @@
 
                 <div class="contact-info">
                     <p><i class="fa-solid fa-phone"></i> <strong>Okan Şengül:</strong> 0542 785 66 88</p>
-                    <p><i class="fa-brands fa-instagram"></i> <strong>İlkay Cafer Şengül:</strong> <a href="https://www.instagram.com/snglilkay/" target="_blank" style="color: var(--primary); text-decoration: none;">@snglilkay</a></p>
+                    <p><i class="fa-brands fa-instagram"></i> <strong>İlkay Cafer Şengül:</strong> <a href="https://www.instagram.com/snglilkay/" target="_blank">@snglilkay</a></p>
                     <p><i class="fa-solid fa-phone"></i> <strong>Habip Şengül:</strong> 0543 362 09 94</p>
                     <p><i class="fa-solid fa-location-dot"></i> <span>Niğde, Yeşilgölcük, Türkiye</span></p>
                 </div>
@@ -187,10 +68,21 @@
                 </div>
             </div>
 
+            <div class="footer-nav">
+                <h3 data-i18n="footer.quickmenu">Hızlı Menü</h3>
+                <ul>
+                    <li><a href="index.html" data-i18n="nav.home">Anasayfa</a></li>
+                    <li><a href="hizmetlerimiz.html" data-i18n="nav.services">Hizmetlerimiz</a></li>
+                    <li><a href="galeri.html" data-i18n="nav.gallery">Galeri</a></li>
+                    <li><a href="hakkimizda.html" data-i18n="nav.about">Hakkımızda</a></li>
+                    <li><a href="iletisim.html" data-i18n="nav.contact">İletişim</a></li>
+                </ul>
+            </div>
+
             <div class="footer-map">
                 <h3 data-i18n="footer.location">Konumumuz</h3>
                 <iframe src="https://maps.google.com/maps?q=38.228377,34.775056&hl=tr&z=19&output=embed" width="100%"
-                    height="180" style="border:0;" allowfullscreen="" loading="lazy"
+                    height="180" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
