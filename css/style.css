@@ -2367,5 +2367,53 @@ body.drawer-open {
     color: #fff;
 }
 
+/* KVKK Page Layout */
+.kvkk-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1.5px solid rgba(197, 168, 128, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.kvkk-intro-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+.kvkk-section-block {
+    margin-bottom: 35px;
+}
+
+.kvkk-section-block h2 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-left: 3px solid var(--primary);
+    padding-left: 15px;
+}
+
+.kvkk-section-block p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #bbb;
+    text-align: justify;
+}
+
+@media (max-width: 768px) {
+    .kvkk-container {
+        margin: 30px 15px;
+        padding: 25px;
+    }
+    .kvkk-section-block h2 {
+        font-size: 1.15rem;
+    }
+}
+
 
 

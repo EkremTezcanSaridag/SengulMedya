@@ -142,7 +142,22 @@ const translations = {
         "drawer.title": "MENÜ",
         "drawer.follow": "Bizi takip edin",
         "brand.name": "Şengül Medya",
-        "contact.form.kvkk": "KVKK Aydınlatma Metni'ni okudum ve kabul ediyorum.",
+        "contact.form.kvkk": "<a href='kvkk.html' target='_blank' style='color: var(--primary); text-decoration: underline;'>KVKK Aydınlatma Metni</a>'ni okudum ve kabul ediyorum.",
+
+        // KVKK PAGE
+        "kvkk.title": "KVKK Aydınlatma Metni",
+        "kvkk.subtitle": "Kişisel Verilerin Korunması Kanunu Kapsamında Bilgilendirme",
+        "kvkk.intro": "Şengül Medya olarak kişisel verilerinizin güvenliğine büyük önem veriyoruz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca, veri sorumlusu sıfatıyla sizleri bilgilendirmek isteriz.",
+        "kvkk.sec1.title": "1. Veri Sorumlusu",
+        "kvkk.sec1.text": "Kişisel verileriniz, veri sorumlusu sıfatıyla Yeşilgölcük, Niğde adresinde faaliyet gösteren Şengül Medya tarafından aşağıda açıklanan kapsamda işlenebilecektir.",
+        "kvkk.sec2.title": "2. Kişisel Verilerin Hangi Amaçla İşleneceği",
+        "kvkk.sec2.text": "Toplanan kişisel verileriniz (ad, soyad, telefon, e-posta ve mesaj içeriği gibi); sizlerle iletişim kurmak, taleplerinizi değerlendirmek, fiyat teklifi hazırlamak, çekim randevularını planlamak ve sunduğumuz hizmetleri iyileştirmek amacıyla işlenmektedir.",
+        "kvkk.sec3.title": "3. İşlenen Kişisel Verilerin Kimlere ve Hangi Amaçla Aktarılabileceği",
+        "kvkk.sec3.text": "Kişisel verileriniz üçüncü şahıslara satılmaz veya kiralanmaz. Ancak yasal yükümlülüklerimiz çerçevesinde yetkili kamu kurum ve kuruluşları ile yasal mercilerden gelen talepler doğrultusunda ilgili makamlarla paylaşılabilecektir.",
+        "kvkk.sec4.title": "4. Kişisel Veri Toplamanın Yöntemi ve Hukuki Sebebi",
+        "kvkk.sec4.text": "Kişisel verileriniz, web sitemizdeki iletişim formu, sosyal medya kanallarımız, telefon görüşmeleri veya e-posta yoluyla, tamamen veya kısmen otomatik yollarla, sözleşmenin kurulması veya ifası ile ilgili yasal yükümlülüklerin yerine getirilmesi hukuki sebepleriyle toplanmaktadır.",
+        "kvkk.sec5.title": "5. Kişisel Veri Sahibinin Hakları",
+        "kvkk.sec5.text": "KVKK'nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işlenme amacını ve buna uygun kullanılıp kullanılmadığını öğrenme, eksik veya yanlış işlenmişse düzeltilmesini isteme haklarına sahiptir. Bu haklarınızı kullanmak için iletişim sayfamızdan bizimle irtibata geçebilirsiniz.",
 
         // LANG BTN
         "lang.btn": "🇬🇧 English",
@@ -287,7 +302,22 @@ const translations = {
         "drawer.title": "MENU",
         "drawer.follow": "Follow us",
         "brand.name": "Sengul Media",
-        "contact.form.kvkk": "I have read and agree to the KVKK Clarification Text.",
+        "contact.form.kvkk": "I have read and agree to the <a href='kvkk.html' target='_blank' style='color: var(--primary); text-decoration: underline;'>KVKK Clarification Text</a>.",
+
+        // KVKK PAGE
+        "kvkk.title": "KVKK Clarification Text",
+        "kvkk.subtitle": "Information Notice Under the Personal Data Protection Law",
+        "kvkk.intro": "As Sengul Media, we attach great importance to the security of your personal data. In accordance with the Personal Data Protection Law No. 6698 (KVKK), we would like to inform you as the data controller.",
+        "kvkk.sec1.title": "1. Data Controller",
+        "kvkk.sec1.text": "Your personal data will be processed by Sengul Media, operating in Yesilgolcuk, Nigde, in the capacity of data controller within the scope explained below.",
+        "kvkk.sec2.title": "2. Purpose of Processing Personal Data",
+        "kvkk.sec2.text": "Your collected personal data (such as name, surname, phone, e-mail and message content) are processed for the purposes of contacting you, evaluating your requests, preparing price quotes, planning shooting appointments and improving the services we offer.",
+        "kvkk.sec3.title": "3. To Whom and For What Purpose Processed Personal Data Can Be Transferred",
+        "kvkk.sec3.text": "Your personal data is not sold or rented to third parties. However, within the framework of our legal obligations, it may be shared with the relevant authorities in line with requests from authorized public institutions and organizations and legal authorities.",
+        "kvkk.sec4.title": "4. Method and Legal Ground of Personal Data Collection",
+        "kvkk.sec4.text": "Your personal data is collected through the contact form on our website, our social media channels, phone calls or e-mail, fully or partially automated, based on the legal grounds of the establishment or performance of a contract and fulfillment of legal obligations.",
+        "kvkk.sec5.title": "5. Rights of the Personal Data Subject",
+        "kvkk.sec5.text": "Under Article 11 of the KVKK, data subjects have the right to learn whether their personal data is processed, to request information if processed, to learn the purpose of processing and whether it is used appropriately, and to request correction if processed incompletely or incorrectly. You can contact us via our contact page to exercise these rights.",
 
         // LANG BTN
         "lang.btn": "🇹🇷 Türkçe",
