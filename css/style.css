@@ -2368,9 +2368,14 @@ body.drawer-open {
 }
 
 /* KVKK Page Layout */
+.kvkk-content-section {
+    background-color: var(--bg-dark);
+    padding: 20px 5% 80px;
+}
+
 .kvkk-container {
     max-width: 900px;
-    margin: 60px auto;
+    margin: 0 auto;
     padding: 40px;
     background: rgba(255, 255, 255, 0.02);
     border: 1.5px solid rgba(197, 168, 128, 0.1);
