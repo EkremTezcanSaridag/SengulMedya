@@ -149,3 +149,30 @@ if (contactForm) {
         }
     });
 }
+
+// ─── Harita Lazy Loading (IntersectionObserver) ─────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    const mapPlaceholder = document.getElementById('map-placeholder');
+    if (mapPlaceholder) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const src = mapPlaceholder.getAttribute('data-src');
+                    if (src) {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = src;
+                        iframe.setAttribute('allowfullscreen', '');
+                        iframe.setAttribute('loading', 'lazy');
+                        iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+                        mapPlaceholder.appendChild(iframe);
+                    }
+                    observer.disconnect();
+                }
+            });
+        }, {
+            rootMargin: '100px 0px',
+            threshold: 0.01
+        });
+        observer.observe(mapPlaceholder);
+    }
+});
