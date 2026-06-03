@@ -1319,6 +1319,7 @@ body.drawer-open {
 
 .about-image img {
     width: 100%;
+    height: auto;
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(197, 168, 128, 0.2);
