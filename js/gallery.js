@@ -44,44 +44,172 @@ document.addEventListener('DOMContentLoaded', function () {
             var slide = wrapper.parentElement;
             var videoUrl = slide.getAttribute('data-video-url');
 
-            // Create iframe but keep it invisible while it loads
-            var iframe = document.createElement('iframe');
-            iframe.setAttribute('src', videoUrl + "?autoplay=1");
-            iframe.setAttribute('frameborder', '0');
-            iframe.setAttribute('allow', 'autoplay; encrypted-media');
-            iframe.setAttribute('allowfullscreen', 'true');
-            iframe.style.opacity = '0';
-            iframe.style.transition = 'opacity 0.4s ease';
-
-            wrapper.appendChild(iframe);
-
-            // Defensive fallback: If loading takes too long, fade in anyway after 3 seconds
-            var fallbackTimeout = setTimeout(function() {
-                if (iframe.style.opacity !== '1') {
-                    iframe.style.opacity = '1';
-                    cover.style.transition = 'opacity 0.4s ease';
-                    cover.style.opacity = '0';
-                    setTimeout(function() {
-                        if (cover && cover.parentNode === wrapper) {
-                            wrapper.removeChild(cover);
-                        }
-                    }, 400);
+            var fileId = "";
+            var isGoogleDrive = videoUrl.includes("drive.google.com");
+            if (isGoogleDrive) {
+                var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                if (match && match[1]) {
+                    fileId = match[1];
                 }
-            }, 3000);
+            }
 
-            // Once the iframe loads, fade it in and remove the cover smoothly (prevents black screen)
-            iframe.onload = function () {
-                clearTimeout(fallbackTimeout);
-                iframe.style.opacity = '1';
+            var videoIndex = videoUrl.includes('1FcMQ') ? 1 :
+                videoUrl.includes('15uFH') ? 2 :
+                videoUrl.includes('Vi9ph') ? 3 :
+                videoUrl.includes('8jtx8') ? 4 : 5;
+            
+            var localSrc = 'videos/video' + videoIndex + '.mp4';
+            var videoLoaded = false;
+
+            // Step 1: Try playing local video first (100% muted autoplay without network blocks)
+            var videoEl = document.createElement('video');
+            videoEl.setAttribute('autoplay', 'true');
+            videoEl.setAttribute('muted', 'true');
+            videoEl.setAttribute('loop', 'true');
+            videoEl.setAttribute('playsinline', 'true');
+            videoEl.style.width = '100%';
+            videoEl.style.height = '100%';
+            videoEl.style.position = 'absolute';
+            videoEl.style.top = '0';
+            videoEl.style.left = '0';
+            videoEl.style.objectFit = 'cover';
+            videoEl.style.opacity = '0';
+            videoEl.style.transition = 'opacity 0.4s ease';
+            
+            // Programmatically force mute
+            videoEl.muted = true;
+
+            var localSource = document.createElement('source');
+            localSource.setAttribute('src', localSrc);
+            localSource.setAttribute('type', 'video/mp4');
+            videoEl.appendChild(localSource);
+
+            wrapper.appendChild(videoEl);
+
+            // On successful local video load and play
+            videoEl.addEventListener('playing', function() {
+                videoLoaded = true;
+                videoEl.style.opacity = '1';
                 cover.style.transition = 'opacity 0.4s ease';
                 cover.style.opacity = '0';
-                setTimeout(function () {
+                setTimeout(function() {
                     if (cover && cover.parentNode === wrapper) {
                         wrapper.removeChild(cover);
                     }
                 }, 400);
-            };
+            });
+
+            // Handle local file not found or load error
+            var hasFailed = false;
+            localSource.addEventListener('error', function() {
+                if (!hasFailed) {
+                    hasFailed = true;
+                    fallbackToGoogleDriveDirect();
+                }
+            });
+
+            // Fallback timer: if local video doesn't play in 1.2 seconds, fallback
+            var timeoutId = setTimeout(function() {
+                if (!videoLoaded && !hasFailed) {
+                    hasFailed = true;
+                    fallbackToGoogleDriveDirect();
+                }
+            }, 1200);
+
+            function fallbackToGoogleDriveDirect() {
+                clearTimeout(timeoutId);
+                // Remove local video element
+                if (videoEl && videoEl.parentNode === wrapper) {
+                    wrapper.removeChild(videoEl);
+                }
+
+                if (isGoogleDrive && fileId) {
+                    // Step 2: Try playing Google Drive direct stream (muted)
+                    var driveVideoEl = document.createElement('video');
+                    driveVideoEl.setAttribute('autoplay', 'true');
+                    driveVideoEl.setAttribute('muted', 'true');
+                    driveVideoEl.setAttribute('loop', 'true');
+                    driveVideoEl.setAttribute('playsinline', 'true');
+                    driveVideoEl.setAttribute('crossorigin', 'anonymous');
+                    driveVideoEl.style.width = '100%';
+                    driveVideoEl.style.height = '100%';
+                    driveVideoEl.style.position = 'absolute';
+                    driveVideoEl.style.top = '0';
+                    driveVideoEl.style.left = '0';
+                    driveVideoEl.style.objectFit = 'cover';
+                    driveVideoEl.style.opacity = '0';
+                    driveVideoEl.style.transition = 'opacity 0.4s ease';
+                    driveVideoEl.muted = true;
+
+                    var driveSource = document.createElement('source');
+                    driveSource.setAttribute('src', 'https://drive.google.com/uc?export=download&id=' + fileId);
+                    driveSource.setAttribute('type', 'video/mp4');
+                    driveVideoEl.appendChild(driveSource);
+                    wrapper.appendChild(driveVideoEl);
+
+                    driveVideoEl.addEventListener('playing', function() {
+                        videoLoaded = true;
+                        driveVideoEl.style.opacity = '1';
+                        cover.style.transition = 'opacity 0.4s ease';
+                        cover.style.opacity = '0';
+                        setTimeout(function() {
+                            if (cover && cover.parentNode === wrapper) {
+                                wrapper.removeChild(cover);
+                            }
+                        }, 400);
+                    });
+
+                    // Step 3: If direct stream also fails or gets blocked in 2 seconds, fall back to iframe preview
+                    setTimeout(function() {
+                        if (!videoLoaded) {
+                            if (driveVideoEl && driveVideoEl.parentNode === wrapper) {
+                                wrapper.removeChild(driveVideoEl);
+                            }
+                            loadIframeFallback(wrapper, cover, videoUrl);
+                        }
+                    }, 2000);
+                } else {
+                    loadIframeFallback(wrapper, cover, videoUrl);
+                }
+            }
         });
+    }
+
+    function loadIframeFallback(wrapper, cover, videoUrl) {
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('src', videoUrl + "?autoplay=1");
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'autoplay; encrypted-media');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.style.opacity = '0';
+        iframe.style.transition = 'opacity 0.4s ease';
+
+        wrapper.appendChild(iframe);
+
+        var fallbackTimeout = setTimeout(function() {
+            if (iframe.style.opacity !== '1') {
+                iframe.style.opacity = '1';
+                cover.style.transition = 'opacity 0.4s ease';
+                cover.style.opacity = '0';
+                setTimeout(function() {
+                    if (cover && cover.parentNode === wrapper) {
+                        wrapper.removeChild(cover);
+                    }
+                }, 400);
+            }
+        }, 3000);
+
+        iframe.onload = function () {
+            clearTimeout(fallbackTimeout);
+            iframe.style.opacity = '1';
+            cover.style.transition = 'opacity 0.4s ease';
+            cover.style.opacity = '0';
+            setTimeout(function () {
+                if (cover && cover.parentNode === wrapper) {
+                    wrapper.removeChild(cover);
+                }
+            }, 400);
+        };
     }
 
     // Bind click listeners and load background thumbnails on initial page load
