@@ -1526,7 +1526,6 @@ body.drawer-open {
     width: 100%;
     height: calc(100% + 46px); /* Add 46px to the height so the bottom controls are perfectly visible and not cut off */
     border: none;
-    pointer-events: none; /* Blocks all mouse/touch interactions to prevent users from unmuting or changing settings */
 }
 
 /* Fix mobile video compositor freeze by removing 3D transforms when playing */

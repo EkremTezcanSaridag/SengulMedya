@@ -24,6 +24,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    function initCoverBackground(cover, videoUrl) {
+        var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+        if (match && match[1]) {
+            var fileId = match[1];
+            // Use a dark gradient overlay on the background image for premium styling and text readability
+            cover.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65)), url('https://drive.google.com/thumbnail?id=" + fileId + "&sz=w1000')";
+            cover.style.backgroundSize = "cover";
+            cover.style.backgroundPosition = "center";
+            cover.style.backgroundRepeat = "no-repeat";
+        }
+    }
+
     // Dynamic video loader helper
     function bindCoverClick(cover) {
         cover.addEventListener('click', function (e) {
@@ -32,60 +44,55 @@ document.addEventListener('DOMContentLoaded', function () {
             var slide = wrapper.parentElement;
             var videoUrl = slide.getAttribute('data-video-url');
 
-            var videoId = "";
-            var isGoogleDrive = videoUrl.includes("drive.google.com");
-            if (isGoogleDrive) {
-                var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-                if (match && match[1]) {
-                    videoId = match[1];
+            // Create iframe but keep it invisible while it loads
+            var iframe = document.createElement('iframe');
+            iframe.setAttribute('src', videoUrl + "?autoplay=1");
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'autoplay; encrypted-media');
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.style.opacity = '0';
+            iframe.style.transition = 'opacity 0.4s ease';
+
+            wrapper.appendChild(iframe);
+
+            // Defensive fallback: If loading takes too long, fade in anyway after 3 seconds
+            var fallbackTimeout = setTimeout(function() {
+                if (iframe.style.opacity !== '1') {
+                    iframe.style.opacity = '1';
+                    cover.style.transition = 'opacity 0.4s ease';
+                    cover.style.opacity = '0';
+                    setTimeout(function() {
+                        if (cover && cover.parentNode === wrapper) {
+                            wrapper.removeChild(cover);
+                        }
+                    }, 400);
                 }
-            }
+            }, 3000);
 
-            if (isGoogleDrive && videoId) {
-                // Create HTML5 video element with muted, autoplay, loop and no controls
-                var videoEl = document.createElement('video');
-                videoEl.setAttribute('autoplay', 'true');
-                videoEl.setAttribute('muted', 'true');
-                videoEl.setAttribute('loop', 'true');
-                videoEl.setAttribute('playsinline', 'true');
-                videoEl.style.width = '100%';
-                videoEl.style.height = '100%';
-                videoEl.style.position = 'absolute';
-                videoEl.style.top = '0';
-                videoEl.style.left = '0';
-                videoEl.style.objectFit = 'cover';
-                videoEl.style.pointerEvents = 'none'; // Absolutely no clicks/touches can interact with it
-
-                // Make sure DOM muted property is set programmatically (required by browsers)
-                videoEl.muted = true;
-
-                var sourceEl = document.createElement('source');
-                sourceEl.setAttribute('src', 'https://drive.google.com/uc?export=download&id=' + videoId);
-                sourceEl.setAttribute('type', 'video/mp4');
-                videoEl.appendChild(sourceEl);
-
-                wrapper.innerHTML = '';
-                wrapper.appendChild(videoEl);
-                videoEl.play().catch(function(err) {
-                    console.log("Autoplay blocked or error: ", err);
-                });
-            } else {
-                // Fallback to iframe if it's not Google Drive
-                var iframe = document.createElement('iframe');
-                iframe.setAttribute('src', videoUrl + "?autoplay=1&mute=1&muted=1");
-                iframe.setAttribute('frameborder', '0');
-                iframe.setAttribute('allow', 'autoplay; encrypted-media');
-                iframe.setAttribute('allowfullscreen', 'true');
-                iframe.style.pointerEvents = 'none';
-
-                wrapper.innerHTML = '';
-                wrapper.appendChild(iframe);
-            }
+            // Once the iframe loads, fade it in and remove the cover smoothly (prevents black screen)
+            iframe.onload = function () {
+                clearTimeout(fallbackTimeout);
+                iframe.style.opacity = '1';
+                cover.style.transition = 'opacity 0.4s ease';
+                cover.style.opacity = '0';
+                setTimeout(function () {
+                    if (cover && cover.parentNode === wrapper) {
+                        wrapper.removeChild(cover);
+                    }
+                }, 400);
+            };
         });
     }
 
-    // Bind click listeners on initial page load
-    document.querySelectorAll('.video-cover').forEach(bindCoverClick);
+    // Bind click listeners and load background thumbnails on initial page load
+    document.querySelectorAll('.swiper-slide').forEach(function (slide) {
+        var videoUrl = slide.getAttribute('data-video-url');
+        var cover = slide.querySelector('.video-cover');
+        if (cover && videoUrl) {
+            initCoverBackground(cover, videoUrl);
+            bindCoverClick(cover);
+        }
+    });
 
     // Audio & visual cleanup: When slide changes, unload any active iframes or video tags
     swiper.on('slideChange', function () {
@@ -113,8 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 `;
 
-                // Re-bind the click event to the newly generated cover
-                bindCoverClick(wrapper.querySelector('.video-cover'));
+                // Re-bind click event and dynamic thumbnail to the newly generated cover
+                var newCover = wrapper.querySelector('.video-cover');
+                initCoverBackground(newCover, videoUrl);
+                bindCoverClick(newCover);
             }
         });
 
