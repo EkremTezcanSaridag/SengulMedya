@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const drawerHeader = document.createElement('div');
         drawerHeader.className = 'drawer-header';
         drawerHeader.innerHTML = `
-            <span class="drawer-brand">MENÜ</span>
+            <span class="drawer-brand" data-i18n="drawer.title">MENÜ</span>
             <div class="drawer-actions">
                 <button id="lang-toggle-btn-drawer" aria-label="Dil Değiştir">
                     <i class="fa-solid fa-globe"></i>
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const drawerFooter = document.createElement('div');
         drawerFooter.className = 'drawer-footer';
         drawerFooter.innerHTML = `
-            <p class="drawer-footer-label">Bizi takip edin</p>
+            <p class="drawer-footer-label" data-i18n="drawer.follow">Bizi takip edin</p>
             <div class="drawer-socials">
                 <a href="https://www.instagram.com/sengulmedya/" target="_blank" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>

@@ -133,6 +133,15 @@ const translations = {
         // TEŞEKKÜRLER
         "thanks.title": "Teşekkürler!",
         "thanks.subtitle": "Mesajınız başarıyla alındı.",
+        "thanks.header": "Mesajınız İletildi",
+        "thanks.text": "Teşekkür ederiz. Göndermiş olduğunuz bilgiler ekibimize ulaştı. En kısa sürede sizinle iletişime geçeceğiz.",
+        "thanks.back": "Anasayfaya Dön",
+
+        // EXTRA FOOTER / DRAWER
+        "footer.address": "Niğde, Yeşilgölcük, Türkiye",
+        "drawer.title": "MENÜ",
+        "drawer.follow": "Bizi takip edin",
+        "brand.name": "Şengül Medya",
 
         // LANG BTN
         "lang.btn": "🇬🇧 English",
@@ -154,7 +163,7 @@ const translations = {
         "hero.btn.contact": "Get In Touch",
 
         // INDEX - Stats
-        "stats.title": "Şengül Medya in Numbers",
+        "stats.title": "Sengul Media in Numbers",
         "stats.1.num": "20+",
         "stats.1.title": "Years of Experience",
         "stats.1.desc": "We offer the highest quality shoots with our industry experience.",
@@ -181,13 +190,13 @@ const translations = {
         "test1.name": "Elif & Ahmet Yılmaz",
         "test1.comment": "We worked with Mr. Okan and his team for our wedding story. Every moment turned into a flawless piece of art. Aerial drone shots were simply amazing!",
         "test2.name": "Selin & Burak Kaya",
-        "test2.comment": "Our outdoor shoot day was extremely fun. Frame quality and team's care were perfect. Highly recommended, thanks Şengül Medya!",
+        "test2.comment": "Our outdoor shoot day was extremely fun. Frame quality and team's care were perfect. Highly recommended, thanks Sengul Media!",
 
         // FOOTER
         "footer.desc": "We transform your most special moments into art with professional photography and videography services. Make room for life in our frame.",
         "footer.location": "Our Location",
         "footer.quickmenu": "Quick Menu",
-        "footer.rights": "© 2026 Şengül Medya. All rights reserved.",
+        "footer.rights": "© 2026 Sengul Media. All rights reserved.",
 
         // HİZMETLERİMİZ
         "services.title": "Our Services",
@@ -226,19 +235,19 @@ const translations = {
         // GALLERY
         "gallery.title": "Gallery & Sample Works",
         "gallery.subtitle": "Take a look at the most special moments we have turned into art",
-        "gallery.video1": "Şengül Medya ",
-        "gallery.video2": "Şengül Medya ",
-        "gallery.video3": "Şengül Medya ",
-        "gallery.video4": "Şengül Medya ",
-        "gallery.video5": "Şengül Medya ",
+        "gallery.video1": "Sengul Media",
+        "gallery.video2": "Sengul Media",
+        "gallery.video3": "Sengul Media",
+        "gallery.video4": "Sengul Media",
+        "gallery.video5": "Sengul Media",
 
         // ABOUT
         "about.title": "About Us",
-        "about.subtitle": "The Story of Şengül Medya",
+        "about.subtitle": "The Story of Sengul Media",
         "about.exp.years": "20+",
         "about.exp.label": "Years of Experience",
         "about.who": "Who Are We?",
-        "about.p1": "Based in Niğde, <strong>Şengül Medya</strong> is a professional production agency founded by Okan Şengül, with a mission to transform your most special moments into works of art.",
+        "about.p1": "Based in Nigde, <strong>Sengul Media</strong> is a professional production agency founded by Okan Sengul, with a mission to transform your most special moments into works of art.",
         "about.p2": "With over 20 years of experience in wedding, engagement, commercial and aerial drone photography, we don't just press the shutter — we immortalise your emotions, excitement and brand spirit with a cinematic vision.",
         "about.feat1.title": "Professional Shooting",
         "about.feat1.desc": "Cinematic results at the highest quality.",
@@ -250,8 +259,8 @@ const translations = {
         "contact.subtitle": "Get in touch with us and let us immortalise your special moments",
         "contact.phone.title": "Phone",
         "contact.addr.title": "Address",
-        "contact.addr.l1": "Yeşilgölcük Kasabası",
-        "contact.addr.l2": "Niğde, Merkez",
+        "contact.addr.l1": "Yesilgolcuk",
+        "contact.addr.l2": "",
         "contact.social.title": "Social Media",
         "contact.social.follow": "Follow Us",
         "contact.form.title": "Send Us a Message",
@@ -268,6 +277,15 @@ const translations = {
         // THANKS
         "thanks.title": "Thank You!",
         "thanks.subtitle": "Your message has been received successfully.",
+        "thanks.header": "Message Sent Successfully",
+        "thanks.text": "Thank you. We have received your message and will get back to you as soon as possible.",
+        "thanks.back": "Back to Homepage",
+
+        // EXTRA FOOTER / DRAWER
+        "footer.address": "Yesilgolcuk",
+        "drawer.title": "MENU",
+        "drawer.follow": "Follow us",
+        "brand.name": "Sengul Media",
 
         // LANG BTN
         "lang.btn": "🇹🇷 Türkçe",

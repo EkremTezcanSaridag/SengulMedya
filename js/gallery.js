@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Recreate iframe and play automatically
             var iframe = document.createElement('iframe');
-            iframe.setAttribute('src', videoUrl + "?autoplay=1&mute=0");
+            iframe.setAttribute('src', videoUrl + "?autoplay=1&mute=1&muted=1");
             iframe.setAttribute('frameborder', '0');
             iframe.setAttribute('allow', 'autoplay; encrypted-media');
             iframe.setAttribute('allowfullscreen', 'true');
