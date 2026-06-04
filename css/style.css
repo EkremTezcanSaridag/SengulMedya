@@ -2811,18 +2811,24 @@ body.light-theme .pricing-card.premium {
     box-shadow: 0 15px 35px rgba(197, 168, 128, 0.3);
 }
 
+/* Contact Info / Footer Fixes */
+body.light-theme .contact-info strong {
+    color: #121212 !important;
+}
+
+body.light-theme .contact-info a:hover,
+body.light-theme .info-box a:hover {
+    color: #121212 !important;
+}
+
+#theme-toggle-btn-drawer {
+    margin-left: 0 !important;
+}
+
 /* ── Theme Switcher Responsive Alignment ───────────────────────── */
 @media (max-width: 768px) {
     #theme-toggle-btn {
-        order: 1;
-        margin-right: 15px;
-        margin-left: 0;
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
-    }
-    .menu-toggle {
-        order: 2;
+        display: none !important; /* Hide desktop theme button in mobile header */
     }
     body.light-theme header {
         background: #ffffff !important;
