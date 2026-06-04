@@ -2,12 +2,48 @@
 // Şengül Medya — App JS
 // =====================================================
 
+// ─── Tema Yönetimi (Aydınlık / Koyu Mod) ───────────────────────
+function applyTheme(theme) {
+    if (theme === 'light') {
+        document.body.classList.add('light-theme');
+        const icons = document.querySelectorAll('#theme-toggle-btn i, #theme-toggle-btn-drawer i');
+        icons.forEach(i => {
+            i.className = 'fa-solid fa-moon';
+        });
+    } else {
+        document.body.classList.remove('light-theme');
+        const icons = document.querySelectorAll('#theme-toggle-btn i, #theme-toggle-btn-drawer i');
+        icons.forEach(i => {
+            i.className = 'fa-solid fa-sun';
+        });
+    }
+}
+
+function toggleTheme() {
+    const current = localStorage.getItem('sengul-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('sengul-theme', next);
+    applyTheme(next);
+}
+
+// Sayfa ilk yüklenirken temayı uygula
+const initialTheme = localStorage.getItem('sengul-theme') || 'dark';
+applyTheme(initialTheme);
+
 // ─── Mobil Drawer Menü ────────────────────────────────
 const mobileMenu = document.getElementById('mobile-menu');
 const navbar     = document.querySelector('.navbar');
 
 // Sayfa yüklendiğinde overlay + drawer header enjekte et
 document.addEventListener('DOMContentLoaded', () => {
+    // Sayfa yüklendiğinde butonların ikonlarını güncelle
+    applyTheme(localStorage.getItem('sengul-theme') || 'dark');
+
+    // Masaüstü tema değiştirme butonu listener
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', toggleTheme);
+    }
 
     // Overlay
     const overlay = document.createElement('div');
@@ -21,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         drawerHeader.innerHTML = `
             <span class="drawer-brand" data-i18n="drawer.title">MENÜ</span>
             <div class="drawer-actions">
+                <button id="theme-toggle-btn-drawer" aria-label="Tema Değiştir">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
                 <button id="lang-toggle-btn-drawer" aria-label="Dil Değiştir">
                     <i class="fa-solid fa-globe"></i>
                     <span class="drawer-lang-label">EN</span>
@@ -31,6 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         navbar.insertBefore(drawerHeader, navbar.firstChild);
+
+        // Drawer theme listener
+        const drawerThemeBtn = document.getElementById('theme-toggle-btn-drawer');
+        if (drawerThemeBtn) {
+            drawerThemeBtn.addEventListener('click', toggleTheme);
+        }
 
         // Drawer footer — sosyal ikonlar
         const drawerFooter = document.createElement('div');
