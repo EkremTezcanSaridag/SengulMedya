@@ -2,6 +2,8 @@
 
 Bu proje, bir üniversite final ödevi kapsamında geliştirilmiş olan gerçek bir küçük işletme ve profesyonel prodüksiyon web sitesidir.
 
+🔗 **Canlı Site Bağlantısı:** **[sengulmedya.com](https://sengulmedya.com)**
+
 ## Proje Tanımı ve Müşteri Bilgisi
 *   **Müşteri:** Okan Şengül & İlkay Cafer Şengül (Şengül Medya)
 *   **Sektör:** Profesyonel Fotoğrafçılık, Videografi ve Sinematik Prodüksiyon
@@ -38,25 +40,25 @@ SengulMedya/
 │   └── style.css            # Premium tasarım kuralları, responsive düzenler ve animasyon stilleri
 │
 ├── js/
-│   ├── app.js               # Mobil menü yönetimi, dil geçiş mantığı ve genel etkileşimler
-│   └── lang.js              # i18n Çoklu dil sözlüğü (Türkçe ve İngilizce tüm metinler)
+│   ├── app.js               # Mobil menü yönetimi, form gönderimleri ve genel etkileşimler
+│   ├── lang.js              # i18n Çoklu dil sözlüğü (Türkçe ve İngilizce tüm metinler)
+│   └── gallery.js           # 3 kademeli (Yerel/Drive/Iframe) akıllı video oynatıcı ve Swiper entegrasyonu
 │
 ├── images/                  # Optimize edilmiş WebP formatında görseller, logolar ve favicon
+│
+├── ekran görüntüleri/
+│   ├── anasayfa.png         # Türkçe ana sayfa ekran görüntüsü
+│   └── ingilizceanasayfa.png # İngilizce ana sayfa ekran görüntüsü
 │
 ├── index.html               # Ana sayfa (Hero, sayılarla istatistikler, referanslar ve hızlı hizmetler)
 ├── hizmetlerimiz.html       # Hizmet detayları ve fiyatlandırma paketleri
 ├── galeri.html              # Swiper slider entegrasyonlu interaktif video & fotoğraf galerisi
 ├── hakkimizda.html          # Şengül Medya ekibi ve 20+ yıllık tecrübe hikayesi
-├── iletisim.html            # Çalışan iletişim formu, iletişim bilgileri ve entegre harita
-└── tesekkurler.html         # Form gönderimi sonrası işlem başarılı/teşekkür sayfası
+├── iletisim.html            # Çalışan iletişim formu, yasal onaylar, iletişim bilgileri ve harita
+├── kvkk.html                # Yasal gereksinimlere uyumlu KVKK Aydınlatma Metni sayfası
+├── tesekkurler.html         # Form gönderimi sonrası işlem başarılı/teşekkür sayfası
+└── README.md                # Proje dokümantasyonu ve tanıtım dosyası
 ```
-
----
-
-## Canlı Site Bağlantısı
-
-Web sitesi SSL sertifikalı, yüksek performanslı altyapısı ile tescilli profesyonel alan adı üzerinden yayındadır:
-🔗 **[sengulmedya.com](https://sengulmedya.com)**
 
 ---
 
@@ -73,11 +75,12 @@ Web sitesi SSL sertifikalı, yüksek performanslı altyapısı ile tescilli prof
 
 ## Ekran Görüntüleri
 
-### 🖥️ Ana Sayfa Görünümü
-*Zamı durduran sinematik açılış ekranı ve altın vurgulu modern tasarım.*
+### 🖥️ Türkçe Ana Sayfa Görünümü
+*Sitenin Türkçe dil seçeneğinde premium tasarımı ve görsel zenginliği.*
 
-### 📱 Mobil Uyumlu Video Galeri Görünümü
-*Google Drive iframelerindeki pop-out butonlarını gizleyen özel maskeli, tam genişlikte dikey video oynatıcı kartları.*
+![Türkçe Ana Sayfa](ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/anasayfa.png)
 
-### 🌐 Çoklu Dil ve Hakkımızda Görünümü
-*Tek tıkla Türkçe'den İngilizce'ye geçiş yapan akıcı arayüz.*
+### 🇬🇧 İngilizce Ana Sayfa Görünümü
+*Tek tıkla sayfa yenilenmeden geçiş yapılan İngilizce dil seçeneğindeki görünüm.*
+
+![İngilizce Ana Sayfa](ekran%20g%C3%B6r%C3%BCnt%C3%BCleri/ingilizceanasayfa.png)
