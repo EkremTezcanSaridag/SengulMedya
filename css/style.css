@@ -2727,11 +2727,13 @@ body.light-theme .footer-bottom {
 
 /* Drawer Mobile Menu in Light Theme */
 body.light-theme .navbar {
-    background-color: #ffffff;
+    background: #ffffff !important;
+    border-left: 1px solid rgba(197, 168, 128, 0.3) !important;
 }
 
 body.light-theme .drawer-header {
     border-bottom-color: rgba(197, 168, 128, 0.2);
+    background: #f8f6f0 !important;
 }
 
 body.light-theme .drawer-brand {
@@ -2740,6 +2742,7 @@ body.light-theme .drawer-brand {
 
 body.light-theme .drawer-footer {
     border-top-color: rgba(197, 168, 128, 0.2);
+    background: #f8f6f0 !important;
 }
 
 body.light-theme .drawer-footer-label {
@@ -2767,6 +2770,64 @@ body.light-theme .success-card h1 {
 
 body.light-theme .success-card p {
     color: #555555;
+}
+
+/* ── Global Theme Transition ────────────────────────────────────── */
+body, header, footer, section, .navbar, .info-box, .pricing-card, .quick-service-card, .contact-form-container, .kvkk-container, .success-card {
+    transition: background-color 0.4s ease, background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ── Light Mode Fixes & Enhancements ───────────────────────────── */
+body.light-theme .about-experience {
+    color: #121212 !important;
+}
+body.light-theme .about-experience h3,
+body.light-theme .about-experience p {
+    color: #121212 !important;
+}
+
+body.light-theme .checkbox-text a {
+    color: #a48255;
+    text-decoration: underline;
+}
+
+body.light-theme .swiper-pagination-bullet {
+    background: #121212;
+}
+
+body.light-theme #lang-toggle-btn:hover {
+    color: #121212 !important;
+}
+
+body.light-theme .menu-toggle {
+    color: #333333;
+    background: rgba(197, 168, 128, 0.12);
+    border-color: rgba(197, 168, 128, 0.4);
+}
+
+body.light-theme .pricing-card.premium {
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 15px 35px rgba(197, 168, 128, 0.3);
+}
+
+/* ── Theme Switcher Responsive Alignment ───────────────────────── */
+@media (max-width: 768px) {
+    #theme-toggle-btn {
+        order: 1;
+        margin-right: 15px;
+        margin-left: 0;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .menu-toggle {
+        order: 2;
+    }
+    body.light-theme header {
+        background: #ffffff !important;
+        border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+    }
 }
 
 
