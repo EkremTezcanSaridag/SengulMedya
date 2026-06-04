@@ -36,15 +36,6 @@ const navbar     = document.querySelector('.navbar');
 
 // Sayfa yüklendiğinde overlay + drawer header enjekte et
 document.addEventListener('DOMContentLoaded', () => {
-    // Sayfa yüklendiğinde butonların ikonlarını güncelle
-    applyTheme(localStorage.getItem('sengul-theme') || 'dark');
-
-    // Masaüstü tema değiştirme butonu listener
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', toggleTheme);
-    }
-
     // Overlay
     const overlay = document.createElement('div');
     overlay.id = 'nav-overlay';
@@ -89,6 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         navbar.appendChild(drawerFooter);
+    }
+
+    // Sayfa yüklendiğinde butonların ikonlarını güncelle (artık drawer elemanları DOM'da mevcut)
+    applyTheme(localStorage.getItem('sengul-theme') || 'dark');
+
+    // Masaüstü tema değiştirme butonu listener
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', toggleTheme);
     }
 
     // ─── Açma / Kapama ─────────────────────────────────
