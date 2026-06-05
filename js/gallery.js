@@ -66,54 +66,27 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             var wrapper = this.parentElement;
             var videoUrl = wrapper.parentElement.getAttribute('data-video-url');
-            var isGoogleDrive = videoUrl.includes("drive.google.com");
             var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-            var fileId = (isGoogleDrive && match) ? match[1] : "";
+            var fileId = match ? match[1] : "";
             
-            var vData = getVideoData(videoUrl);
-            var localSrc = 'videos/video' + vData.index + '.mp4';
-            var videoLoaded = false;
-            var hasFailed = false;
+            if (fileId) {
+                var videoEl = createVideo('https://drive.google.com/uc?export=download&id=' + fileId, true);
+                wrapper.appendChild(videoEl);
 
-            var videoEl = createVideo(localSrc, false);
-            wrapper.appendChild(videoEl);
+                var videoLoaded = false;
+                videoEl.addEventListener('playing', function() {
+                    videoLoaded = true;
+                    fadeOutCover(videoEl, cover, wrapper);
+                });
 
-            videoEl.addEventListener('playing', function() {
-                videoLoaded = true;
-                fadeOutCover(videoEl, cover, wrapper);
-            });
-
-            var sourceEl = videoEl.querySelector('source');
-            sourceEl.addEventListener('error', function() {
-                if (!hasFailed) { hasFailed = true; fallback(); }
-            });
-
-            var timeoutId = setTimeout(function() {
-                if (!videoLoaded && !hasFailed) { hasFailed = true; fallback(); }
-            }, 1200);
-
-            function fallback() {
-                clearTimeout(timeoutId);
-                if (videoEl && videoEl.parentNode === wrapper) wrapper.removeChild(videoEl);
-
-                if (isGoogleDrive && fileId) {
-                    var driveVideo = createVideo('https://drive.google.com/uc?export=download&id=' + fileId, true);
-                    wrapper.appendChild(driveVideo);
-
-                    driveVideo.addEventListener('playing', function() {
-                        videoLoaded = true;
-                        fadeOutCover(driveVideo, cover, wrapper);
-                    });
-
-                    setTimeout(function() {
-                        if (!videoLoaded) {
-                            if (driveVideo && driveVideo.parentNode === wrapper) wrapper.removeChild(driveVideo);
-                            loadIframeFallback(wrapper, cover, videoUrl);
-                        }
-                    }, 2000);
-                } else {
-                    loadIframeFallback(wrapper, cover, videoUrl);
-                }
+                setTimeout(function() {
+                    if (!videoLoaded) {
+                        if (videoEl && videoEl.parentNode === wrapper) wrapper.removeChild(videoEl);
+                        loadIframeFallback(wrapper, cover, videoUrl);
+                    }
+                }, 2000);
+            } else {
+                loadIframeFallback(wrapper, cover, videoUrl);
             }
         });
     }
