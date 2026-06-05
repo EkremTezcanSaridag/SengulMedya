@@ -1,8 +1,3 @@
-// =====================================================
-// Şengül Medya — App JS
-// =====================================================
-
-// ─── Tema Yönetimi (Aydınlık / Koyu Mod) ───────────────────────
 function applyTheme(theme) {
     if (theme === 'light') {
         document.body.classList.add('light-theme');
@@ -26,22 +21,18 @@ function toggleTheme() {
     applyTheme(next);
 }
 
-// Sayfa ilk yüklenirken temayı uygula
 const initialTheme = localStorage.getItem('sengul-theme') || 'dark';
 applyTheme(initialTheme);
 
-// ─── Mobil Drawer Menü ────────────────────────────────
 const mobileMenu = document.getElementById('mobile-menu');
 const navbar     = document.querySelector('.navbar');
 
-// Sayfa yüklendiğinde overlay + drawer header enjekte et
 document.addEventListener('DOMContentLoaded', () => {
-    // Overlay
+
     const overlay = document.createElement('div');
     overlay.id = 'nav-overlay';
     document.body.appendChild(overlay);
 
-    // Drawer içine başlık + dil butonu + kapat butonu ekle
     if (navbar) {
         const drawerHeader = document.createElement('div');
         drawerHeader.className = 'drawer-header';
@@ -62,13 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         navbar.insertBefore(drawerHeader, navbar.firstChild);
 
-        // Drawer theme listener
         const drawerThemeBtn = document.getElementById('theme-toggle-btn-drawer');
         if (drawerThemeBtn) {
             drawerThemeBtn.addEventListener('click', toggleTheme);
         }
 
-        // Drawer footer — sosyal ikonlar
         const drawerFooter = document.createElement('div');
         drawerFooter.className = 'drawer-footer';
         drawerFooter.innerHTML = `
@@ -82,16 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navbar.appendChild(drawerFooter);
     }
 
-    // Sayfa yüklendiğinde butonların ikonlarını güncelle (artık drawer elemanları DOM'da mevcut)
     applyTheme(localStorage.getItem('sengul-theme') || 'dark');
 
-    // Masaüstü tema değiştirme butonu listener
     const themeBtn = document.getElementById('theme-toggle-btn');
     if (themeBtn) {
         themeBtn.addEventListener('click', toggleTheme);
     }
 
-    // ─── Açma / Kapama ─────────────────────────────────
     function openDrawer() {
         navbar.classList.add('active');
         document.getElementById('nav-overlay').classList.add('active');
@@ -114,33 +100,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Overlay tıklaması
     document.getElementById('nav-overlay').addEventListener('click', closeDrawer);
 
-    // X butonu
     const closeBtn = document.getElementById('drawer-close');
     if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
 
-    // Escape tuşu
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeDrawer();
     });
 
-    // Nav link tıklamasında drawer kapat
     if (navbar) {
         navbar.querySelectorAll('.navlist a').forEach(link => {
             link.addEventListener('click', closeDrawer);
         });
     }
 
-    // ─── Drawer içi dil butonu ─────────────────────────
     const drawerLangBtn = document.getElementById('lang-toggle-btn-drawer');
     if (drawerLangBtn) {
-        // Başlangıç durumunu ayarla
+
         updateDrawerLangBtn();
 
         drawerLangBtn.addEventListener('click', () => {
-            // lang.js'deki toggleLanguage fonksiyonunu çağır
+
             if (typeof toggleLanguage === 'function') {
                 toggleLanguage();
             }
@@ -158,7 +139,6 @@ function updateDrawerLangBtn() {
     drawerLangBtn.title = current === 'tr' ? 'Switch to English' : 'Türkçeye geç';
 }
 
-// ─── İletişim Formu AJAX ──────────────────────────────
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
@@ -193,7 +173,6 @@ if (contactForm) {
     });
 }
 
-// ─── Harita Lazy Loading (IntersectionObserver) ─────────────────
 document.addEventListener('DOMContentLoaded', () => {
     const mapPlaceholder = document.getElementById('map-placeholder');
     if (mapPlaceholder) {

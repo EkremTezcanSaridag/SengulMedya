@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
         if (match && match[1]) {
             var fileId = match[1];
-            // Use a dark gradient overlay on the background image for premium styling and text readability
+
             cover.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65)), url('https://drive.google.com/thumbnail?id=" + fileId + "&sz=w1000')";
             cover.style.backgroundSize = "cover";
             cover.style.backgroundPosition = "center";
@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Dynamic video loader helper
     function bindCoverClick(cover) {
         cover.addEventListener('click', function (e) {
             e.preventDefault();
@@ -57,11 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 videoUrl.includes('15uFH') ? 2 :
                 videoUrl.includes('Vi9ph') ? 3 :
                 videoUrl.includes('8jtx8') ? 4 : 5;
-            
+
             var localSrc = 'videos/video' + videoIndex + '.mp4';
             var videoLoaded = false;
 
-            // Step 1: Try playing local video first (100% muted autoplay without network blocks)
             var videoEl = document.createElement('video');
             videoEl.setAttribute('autoplay', 'true');
             videoEl.setAttribute('muted', 'true');
@@ -75,8 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
             videoEl.style.objectFit = 'cover';
             videoEl.style.opacity = '0';
             videoEl.style.transition = 'opacity 0.4s ease';
-            
-            // Programmatically force mute
+
             videoEl.muted = true;
 
             var localSource = document.createElement('source');
@@ -86,7 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             wrapper.appendChild(videoEl);
 
-            // On successful local video load and play
             videoEl.addEventListener('playing', function() {
                 videoLoaded = true;
                 videoEl.style.opacity = '1';
@@ -99,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 400);
             });
 
-            // Handle local file not found or load error
             var hasFailed = false;
             localSource.addEventListener('error', function() {
                 if (!hasFailed) {
@@ -108,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Fallback timer: if local video doesn't play in 1.2 seconds, fallback
             var timeoutId = setTimeout(function() {
                 if (!videoLoaded && !hasFailed) {
                     hasFailed = true;
@@ -118,13 +112,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             function fallbackToGoogleDriveDirect() {
                 clearTimeout(timeoutId);
-                // Remove local video element
+
                 if (videoEl && videoEl.parentNode === wrapper) {
                     wrapper.removeChild(videoEl);
                 }
 
                 if (isGoogleDrive && fileId) {
-                    // Step 2: Try playing Google Drive direct stream (muted)
+
                     var driveVideoEl = document.createElement('video');
                     driveVideoEl.setAttribute('autoplay', 'true');
                     driveVideoEl.setAttribute('muted', 'true');
@@ -159,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 400);
                     });
 
-                    // Step 3: If direct stream also fails or gets blocked in 2 seconds, fall back to iframe preview
                     setTimeout(function() {
                         if (!videoLoaded) {
                             if (driveVideoEl && driveVideoEl.parentNode === wrapper) {
@@ -212,7 +205,6 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
-    // Bind click listeners and load background thumbnails on initial page load
     document.querySelectorAll('.swiper-slide').forEach(function (slide) {
         var videoUrl = slide.getAttribute('data-video-url');
         var cover = slide.querySelector('.video-cover');
@@ -222,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Audio & visual cleanup: When slide changes, unload any active iframes or video tags
     swiper.on('slideChange', function () {
         document.querySelectorAll('.swiper-slide').forEach(function (slide) {
             var wrapper = slide.querySelector('.video-wrapper');
@@ -238,7 +229,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         videoId === 'gallery.video3' ? 'Şengül Medya — Gelin Çıkarma & Eğlence' :
                             videoId === 'gallery.video4' ? 'Şengül Medya — Drone ile Havadan Çekimler' : 'Şengül Medya — Reklam & Mekan Tanıtımı';
 
-                // Restore cover overlay dynamically
                 wrapper.innerHTML = `
                     <div class="video-cover">
                         <div class="play-btn-circle">
@@ -248,14 +238,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                 `;
 
-                // Re-bind click event and dynamic thumbnail to the newly generated cover
                 var newCover = wrapper.querySelector('.video-cover');
                 initCoverBackground(newCover, videoUrl);
                 bindCoverClick(newCover);
             }
         });
 
-        // Re-apply translations to ensure language stays consistent on dynamic recreation
         if (typeof applyTranslations === 'function' && typeof getCurrentLang === 'function') {
             applyTranslations(getCurrentLang());
         }

@@ -1,24 +1,18 @@
-// =====================================================
-// Şengül Medya - Dil Değiştirme Sistemi (TR / EN)
-// =====================================================
-
 const translations = {
     tr: {
-        // NAV
+
         "nav.home": "Anasayfa",
         "nav.services": "Hizmetlerimiz",
         "nav.gallery": "Galeri",
         "nav.about": "Hakkımızda",
         "nav.contact": "İletişim",
 
-        // INDEX - Hero
         "hero.tagline": "Profesyonel Fotoğraf & Videografi",
         "hero.title": "ZAMANI DURDURAN KARELER",
         "hero.desc": "Siz anın tadını çıkarırken, biz duygularınızı ve en değerli hatıralarınızı kusursuz birer sanat eserine dönüştürüyoruz. Profesyonel kadromuz ve yenilikçi vizyonumuzla en güzel anlarınızı ölümsüzleştiriyoruz.",
         "hero.btn.services": "Hizmetlerimizi Keşfedin",
         "hero.btn.contact": "İletişime Geçin",
 
-        // INDEX - Quick Services
         "quick.title": "Neler Yapıyoruz?",
         "quick.subtitle": "Sanatsal dokunuşlar ve profesyonel ekipmanlarla hizmetinizdeyiz",
         "quick.1.title": "Dış Çekim & Düğün",
@@ -28,20 +22,17 @@ const translations = {
         "quick.3.title": "Klip & Tanıtımlar",
         "quick.3.desc": "Sosyal medya hesaplarınız ve tanıtımlarınız için dikkat çekici, dinamik klipler üretiyoruz.",
 
-        // FOOTER
         "footer.desc": "Profesyonel fotoğrafçılık ve videografi hizmetleriyle en özel anlarınızı sanata dönüştürüyoruz. Kadrajımızda yaşama yer açın.",
         "footer.location": "Konumumuz",
         "footer.quickmenu": "Hızlı Menü",
         "footer.rights": "© 2026 Şengül Medya. Tüm hakları saklıdır.",
 
-        // HİZMETLERİMİZ - Page header
         "services.title": "Hizmetlerimiz",
         "services.subtitle": "Sizler için sunduğumuz profesyonel çözümler",
         "pricing.title": "FİYAT",
         "pricing.title.span": "Paketleri",
         "pricing.subtitle": "En özel anlarınız, profesyonel dokunuşlarla ölümsüzleşir.",
 
-        // Pricing cards
         "card1.title": "Nişan & Düğün",
         "card1.f1": "Nişan",
         "card1.f2": "Nişan + Drone",
@@ -68,7 +59,6 @@ const translations = {
         "card4.f2": "Mekan Tanıtım Filmi",
         "card4.btn": "İletişime Geç",
 
-        // GALERİ
         "gallery.title": "Galeri ve Örnek Çalışmalarımız",
         "gallery.subtitle": "Sanata dönüştürdüğümüz en özel anlara göz atın",
         "gallery.video1": "Şengül Medya",
@@ -77,7 +67,6 @@ const translations = {
         "gallery.video4": "Şengül Medya",
         "gallery.video5": "Şengül Medya",
 
-        // HAKKIMIZDA
         "about.title": "Hakkımızda",
         "about.subtitle": "Şengül Medya'nın Hikayesi",
         "about.exp.years": "20+",
@@ -90,7 +79,6 @@ const translations = {
         "about.feat2.title": "Sinematik Kurgu",
         "about.feat2.desc": "Sıradan videoları filme dönüştüren dokunuşlar.",
 
-        // İLETİŞİM
         "contact.title": "İletişim",
         "contact.subtitle": "Bizimle iletişime geçin, özel anlarınızı ölümsüzleştirelim",
         "contact.phone.title": "Telefon",
@@ -110,19 +98,16 @@ const translations = {
         "contact.form.label.msg": "Mesajınız",
         "contact.form.btn": "Mesajı Gönder",
 
-        // TEŞEKKÜRLER
         "thanks.header": "Mesajınız İletildi",
         "thanks.text": "Teşekkür ederiz. Göndermiş olduğunuz bilgiler ekibimize ulaştı. En kısa sürede sizinle iletişime geçeceğiz.",
         "thanks.back": "Anasayfaya Dön",
 
-        // EXTRA FOOTER / DRAWER
         "footer.address": "Niğde, Yeşilgölcük, Türkiye",
         "drawer.title": "MENÜ",
         "drawer.follow": "Bizi takip edin",
         "brand.name": "Şengül Medya",
         "contact.form.kvkk": "<a href='kvkk.html' target='_blank' style='color: var(--primary); text-decoration: underline;'>KVKK Aydınlatma Metni</a>'ni okudum ve kabul ediyorum.",
 
-        // KVKK PAGE
         "kvkk.title": "KVKK Aydınlatma Metni",
         "kvkk.subtitle": "Kişisel Verilerin Korunması Kanunu Kapsamında Bilgilendirme",
         "kvkk.intro": "Şengül Medya olarak kişisel verilerinizin güvenliğine büyük önem veriyoruz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca, veri sorumlusu sıfatıyla sizleri bilgilendirmek isteriz.",
@@ -137,26 +122,23 @@ const translations = {
         "kvkk.sec5.title": "5. Kişisel Veri Sahibinin Hakları",
         "kvkk.sec5.text": "KVKK'nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, işlenme amacını ve buna uygun kullanılıp kullanılmadığını öğrenme, eksik veya yanlış işlenmişse düzeltilmesini isteme haklarına sahiptir. Bu haklarınızı kullanmak için iletişim sayfamızdan bizimle irtibata geçebilirsiniz.",
 
-        // LANG BTN
         "lang.btn": "🇬🇧 English",
     },
 
     en: {
-        // NAV
+
         "nav.home": "Home",
         "nav.services": "Services",
         "nav.gallery": "Gallery",
         "nav.about": "About Us",
         "nav.contact": "Contact",
 
-        // INDEX - Hero
         "hero.tagline": "Professional Photography & Videography",
         "hero.title": "FRAMES THAT STOP TIME",
         "hero.desc": "While you enjoy the moment, we transform your emotions and most precious memories into flawless works of art. With our professional team and innovative vision, we immortalise your most beautiful moments.",
         "hero.btn.services": "Explore Our Services",
         "hero.btn.contact": "Get In Touch",
 
-        // INDEX - Quick Services
         "quick.title": "What We Do",
         "quick.subtitle": "At your service with artistic touches and professional equipment",
         "quick.1.title": "Outdoor Shoots & Weddings",
@@ -166,20 +148,17 @@ const translations = {
         "quick.3.title": "Clips & Promotions",
         "quick.3.desc": "We produce eye-catching, dynamic clips for your social media and promotions.",
 
-        // FOOTER
         "footer.desc": "We transform your most special moments into art with professional photography and videography services. Make room for life in our frame.",
         "footer.location": "Our Location",
         "footer.quickmenu": "Quick Menu",
         "footer.rights": "© 2026 Sengul Media. All rights reserved.",
 
-        // HİZMETLERİMİZ
         "services.title": "Our Services",
         "services.subtitle": "Professional solutions we offer for you",
         "pricing.title": "PRICING",
         "pricing.title.span": "Packages",
         "pricing.subtitle": "Your most special moments, immortalised with a professional touch.",
 
-        // Pricing cards
         "card1.title": "Engagement & Wedding",
         "card1.f1": "Engagement",
         "card1.f2": "Engagement + Drone",
@@ -206,7 +185,6 @@ const translations = {
         "card4.f2": "Venue Promo Film",
         "card4.btn": "Get In Touch",
 
-        // GALLERY
         "gallery.title": "Gallery & Sample Works",
         "gallery.subtitle": "Take a look at the most special moments we have turned into art",
         "gallery.video1": "Sengul Media",
@@ -215,7 +193,6 @@ const translations = {
         "gallery.video4": "Sengul Media",
         "gallery.video5": "Sengul Media",
 
-        // ABOUT
         "about.title": "About Us",
         "about.subtitle": "The Story of Sengul Media",
         "about.exp.years": "20+",
@@ -228,7 +205,6 @@ const translations = {
         "about.feat2.title": "Cinematic Editing",
         "about.feat2.desc": "Touches that turn ordinary videos into films.",
 
-        // CONTACT
         "contact.title": "Contact",
         "contact.subtitle": "Get in touch with us and let us immortalise your special moments",
         "contact.phone.title": "Phone",
@@ -248,19 +224,16 @@ const translations = {
         "contact.form.label.msg": "Your Message",
         "contact.form.btn": "Send Message",
 
-        // THANKS
         "thanks.header": "Message Sent Successfully",
         "thanks.text": "Thank you. We have received your message and will get back to you as soon as possible.",
         "thanks.back": "Back to Homepage",
 
-        // EXTRA FOOTER / DRAWER
         "footer.address": "Yesilgolcuk",
         "drawer.title": "MENU",
         "drawer.follow": "Follow us",
         "brand.name": "Sengul Media",
         "contact.form.kvkk": "I have read and agree to the <a href='kvkk.html' target='_blank' style='color: var(--primary); text-decoration: underline;'>KVKK Clarification Text</a>.",
 
-        // KVKK PAGE
         "kvkk.title": "KVKK Clarification Text",
         "kvkk.subtitle": "Information Notice Under the Personal Data Protection Law",
         "kvkk.intro": "As Sengul Media, we attach great importance to the security of your personal data. In accordance with the Personal Data Protection Law No. 6698 (KVKK), we would like to inform you as the data controller.",
@@ -275,12 +248,9 @@ const translations = {
         "kvkk.sec5.title": "5. Rights of the Personal Data Subject",
         "kvkk.sec5.text": "Under Article 11 of the KVKK, data subjects have the right to learn whether their personal data is processed, to request information if processed, to learn the purpose of processing and whether it is used appropriately, and to request correction if processed incompletely or incorrectly. You can contact us via our contact page to exercise these rights.",
 
-        // LANG BTN
         "lang.btn": "🇹🇷 Türkçe",
     }
 };
-
-// ─── Core helpers ─────────────────────────────────────────────────
 
 function getCurrentLang() {
     return localStorage.getItem('sengul-lang') || 'tr';
@@ -290,16 +260,14 @@ function applyTranslations(lang) {
     const t = translations[lang];
     if (!t) return;
 
-    // All elements with [data-i18n]
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) {
-            // Use innerHTML to support <strong> etc.
+
             el.innerHTML = t[key];
         }
     });
 
-    // Placeholder attributes
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (t[key] !== undefined) {
@@ -307,14 +275,11 @@ function applyTranslations(lang) {
         }
     });
 
-    // Update <html lang>
     document.documentElement.setAttribute('lang', lang);
 
-    // Update desktop lang button label
     const btn = document.getElementById('lang-toggle-btn');
     if (btn) btn.innerHTML = `<i class="fa-solid fa-globe"></i> ${t['lang.btn']}`;
 
-    // Update drawer lang button label (mobil)
     const drawerBtn = document.getElementById('lang-toggle-btn-drawer');
     if (drawerBtn) {
         const label = drawerBtn.querySelector('.drawer-lang-label');
@@ -329,16 +294,13 @@ function toggleLanguage() {
     applyTranslations(next);
 }
 
-// ─── Init ─────────────────────────────────────────────────────────
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Kaydedilen dili her sayfada uygula
+
     applyTranslations(getCurrentLang());
 
-    // Masaüstü dil butonu
     const btn = document.getElementById('lang-toggle-btn');
     if (btn) {
         btn.addEventListener('click', toggleLanguage);
     }
-    // Not: Drawer (mobil) dil butonunun event listener'ı app.js tarafından yönetilir.
+
 });
