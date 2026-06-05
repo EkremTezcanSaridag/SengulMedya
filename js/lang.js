@@ -18,18 +18,6 @@ const translations = {
         "hero.btn.services": "Hizmetlerimizi Keşfedin",
         "hero.btn.contact": "İletişime Geçin",
 
-        // INDEX - Stats
-        "stats.title": "Sayılarla Şengül Medya",
-        "stats.1.num": "20+",
-        "stats.1.title": "Yıllık Deneyim",
-        "stats.1.desc": "Sektördeki tecrübemizle en kaliteli çekimleri sunuyoruz.",
-        "stats.2.num": "500+",
-        "stats.2.title": "Mutlu Çift",
-        "stats.2.desc": "En özel günlerinde mutluluklarına ortak olduk.",
-        "stats.3.num": "150+",
-        "stats.3.title": "Klip & Drone Projesi",
-        "stats.3.desc": "Havadan çekimler ve sanatsal klipler ürettik.",
-
         // INDEX - Quick Services
         "quick.title": "Neler Yapıyoruz?",
         "quick.subtitle": "Sanatsal dokunuşlar ve profesyonel ekipmanlarla hizmetinizdeyiz",
@@ -39,14 +27,6 @@ const translations = {
         "quick.2.desc": "Özel anlarınızı veya mekanlarınızı gökyüzünden muhteşem açılarla kaydediyoruz.",
         "quick.3.title": "Klip & Tanıtımlar",
         "quick.3.desc": "Sosyal medya hesaplarınız ve tanıtımlarınız için dikkat çekici, dinamik klipler üretiyoruz.",
-
-        // INDEX - Testimonials
-        "testimonials.title": "Çiftlerimiz Ne Diyor?",
-        "testimonials.subtitle": "Bizi tercih eden çiftlerimizin ve ortaklarımızın değerli yorumları",
-        "test1.name": "Elif & Ahmet Yılmaz",
-        "test1.comment": "Düğün hikayemiz için Okan Bey ve ekibiyle çalıştık. Her anımız muhteşem birer sanat eserine dönüştü. Drone çekimleri tek kelimeyle harikaydı!",
-        "test2.name": "Selin & Burak Kaya",
-        "test2.comment": "Dış çekim günümüz çok eğlenceli geçti. Kadraj kalitesi ve ilgileri mükemmeldi. Şiddetle tavsiye ederiz, teşekkürler Şengül Medya!",
 
         // FOOTER
         "footer.desc": "Profesyonel fotoğrafçılık ve videografi hizmetleriyle en özel anlarınızı sanata dönüştürüyoruz. Kadrajımızda yaşama yer açın.",
@@ -131,8 +111,6 @@ const translations = {
         "contact.form.btn": "Mesajı Gönder",
 
         // TEŞEKKÜRLER
-        "thanks.title": "Teşekkürler!",
-        "thanks.subtitle": "Mesajınız başarıyla alındı.",
         "thanks.header": "Mesajınız İletildi",
         "thanks.text": "Teşekkür ederiz. Göndermiş olduğunuz bilgiler ekibimize ulaştı. En kısa sürede sizinle iletişime geçeceğiz.",
         "thanks.back": "Anasayfaya Dön",
@@ -178,18 +156,6 @@ const translations = {
         "hero.btn.services": "Explore Our Services",
         "hero.btn.contact": "Get In Touch",
 
-        // INDEX - Stats
-        "stats.title": "Sengul Media in Numbers",
-        "stats.1.num": "20+",
-        "stats.1.title": "Years of Experience",
-        "stats.1.desc": "We offer the highest quality shoots with our industry experience.",
-        "stats.2.num": "500+",
-        "stats.2.title": "Happy Couples",
-        "stats.2.desc": "We shared the joy of their most special days.",
-        "stats.3.num": "150+",
-        "stats.3.title": "Clip & Drone Projects",
-        "stats.3.desc": "We produced stunning aerial shots and artistic clips.",
-
         // INDEX - Quick Services
         "quick.title": "What We Do",
         "quick.subtitle": "At your service with artistic touches and professional equipment",
@@ -199,14 +165,6 @@ const translations = {
         "quick.2.desc": "We capture your special moments or venues from spectacular sky angles.",
         "quick.3.title": "Clips & Promotions",
         "quick.3.desc": "We produce eye-catching, dynamic clips for your social media and promotions.",
-
-        // INDEX - Testimonials
-        "testimonials.title": "What Our Couples Say",
-        "testimonials.subtitle": "Dearest comments from couples and partners who preferred us",
-        "test1.name": "Elif & Ahmet Yılmaz",
-        "test1.comment": "We worked with Mr. Okan and his team for our wedding story. Every moment turned into a flawless piece of art. Aerial drone shots were simply amazing!",
-        "test2.name": "Selin & Burak Kaya",
-        "test2.comment": "Our outdoor shoot day was extremely fun. Frame quality and team's care were perfect. Highly recommended, thanks Sengul Media!",
 
         // FOOTER
         "footer.desc": "We transform your most special moments into art with professional photography and videography services. Make room for life in our frame.",
@@ -291,8 +249,6 @@ const translations = {
         "contact.form.btn": "Send Message",
 
         // THANKS
-        "thanks.title": "Thank You!",
-        "thanks.subtitle": "Your message has been received successfully.",
         "thanks.header": "Message Sent Successfully",
         "thanks.text": "Thank you. We have received your message and will get back to you as soon as possible.",
         "thanks.back": "Back to Homepage",
