@@ -4,160 +4,110 @@ document.addEventListener('DOMContentLoaded', function () {
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: "auto",
-        coverflowEffect: {
-            rotate: 15,
-            stretch: 0,
-            depth: 150,
-            modifier: 1,
-            slideShadows: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        keyboard: {
-            enabled: true,
-        }
+        coverflowEffect: { rotate: 15, stretch: 0, depth: 150, modifier: 1, slideShadows: true },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        keyboard: { enabled: true }
     });
+
+    var videoKeys = ['1FcMQ', '15uFH', 'Vi9ph', '8jtx8'];
+    var videoInfo = [
+        { id: 'gallery.video1', title: 'Şengül Medya — Sinematik Düğün Hikayesi' },
+        { id: 'gallery.video2', title: 'Şengül Medya — Profesyonel Dış Çekim' },
+        { id: 'gallery.video3', title: 'Şengül Medya — Gelin Çıkarma & Eğlence' },
+        { id: 'gallery.video4', title: 'Şengül Medya — Drone ile Havadan Çekimler' },
+        { id: 'gallery.video5', title: 'Şengül Medya — Reklam & Mekan Tanıtımı' }
+    ];
+
+    function getVideoData(url) {
+        var idx = videoKeys.findIndex(function (k) { return url.includes(k); });
+        var num = idx !== -1 ? idx + 1 : 5;
+        return { index: num, info: videoInfo[num - 1] };
+    }
 
     function initCoverBackground(cover, videoUrl) {
         var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
         if (match && match[1]) {
-            var fileId = match[1];
-
-            cover.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65)), url('https://drive.google.com/thumbnail?id=" + fileId + "&sz=w1000')";
+            cover.style.backgroundImage = "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65)), url('https://drive.google.com/thumbnail?id=" + match[1] + "&sz=w1000')";
             cover.style.backgroundSize = "cover";
             cover.style.backgroundPosition = "center";
             cover.style.backgroundRepeat = "no-repeat";
         }
     }
 
+    function fadeOutCover(elToShow, cover, wrapper) {
+        elToShow.style.opacity = '1';
+        cover.style.transition = 'opacity 0.4s ease';
+        cover.style.opacity = '0';
+        setTimeout(function() {
+            if (cover && cover.parentNode === wrapper) wrapper.removeChild(cover);
+        }, 400);
+    }
+
+    function createVideo(src, useCrossOrigin) {
+        var video = document.createElement('video');
+        video.setAttribute('autoplay', 'true');
+        video.setAttribute('muted', 'true');
+        video.setAttribute('loop', 'true');
+        video.setAttribute('playsinline', 'true');
+        video.style.cssText = 'width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;opacity:0;transition:opacity 0.4s ease;';
+        if (useCrossOrigin) video.setAttribute('crossorigin', 'anonymous');
+
+        var source = document.createElement('source');
+        source.setAttribute('src', src);
+        source.setAttribute('type', 'video/mp4');
+        video.appendChild(source);
+        video.muted = true;
+        return video;
+    }
+
     function bindCoverClick(cover) {
         cover.addEventListener('click', function (e) {
             e.preventDefault();
             var wrapper = this.parentElement;
-            var slide = wrapper.parentElement;
-            var videoUrl = slide.getAttribute('data-video-url');
-
-            var fileId = "";
+            var videoUrl = wrapper.parentElement.getAttribute('data-video-url');
             var isGoogleDrive = videoUrl.includes("drive.google.com");
-            if (isGoogleDrive) {
-                var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
-                if (match && match[1]) {
-                    fileId = match[1];
-                }
-            }
-
-            var videoIndex = videoUrl.includes('1FcMQ') ? 1 :
-                videoUrl.includes('15uFH') ? 2 :
-                videoUrl.includes('Vi9ph') ? 3 :
-                videoUrl.includes('8jtx8') ? 4 : 5;
-
-            var localSrc = 'videos/video' + videoIndex + '.mp4';
+            var match = videoUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+            var fileId = (isGoogleDrive && match) ? match[1] : "";
+            
+            var vData = getVideoData(videoUrl);
+            var localSrc = 'videos/video' + vData.index + '.mp4';
             var videoLoaded = false;
+            var hasFailed = false;
 
-            var videoEl = document.createElement('video');
-            videoEl.setAttribute('autoplay', 'true');
-            videoEl.setAttribute('muted', 'true');
-            videoEl.setAttribute('loop', 'true');
-            videoEl.setAttribute('playsinline', 'true');
-            videoEl.style.width = '100%';
-            videoEl.style.height = '100%';
-            videoEl.style.position = 'absolute';
-            videoEl.style.top = '0';
-            videoEl.style.left = '0';
-            videoEl.style.objectFit = 'cover';
-            videoEl.style.opacity = '0';
-            videoEl.style.transition = 'opacity 0.4s ease';
-
-            videoEl.muted = true;
-
-            var localSource = document.createElement('source');
-            localSource.setAttribute('src', localSrc);
-            localSource.setAttribute('type', 'video/mp4');
-            videoEl.appendChild(localSource);
-
+            var videoEl = createVideo(localSrc, false);
             wrapper.appendChild(videoEl);
 
             videoEl.addEventListener('playing', function() {
                 videoLoaded = true;
-                videoEl.style.opacity = '1';
-                cover.style.transition = 'opacity 0.4s ease';
-                cover.style.opacity = '0';
-                setTimeout(function() {
-                    if (cover && cover.parentNode === wrapper) {
-                        wrapper.removeChild(cover);
-                    }
-                }, 400);
+                fadeOutCover(videoEl, cover, wrapper);
             });
 
-            var hasFailed = false;
-            localSource.addEventListener('error', function() {
-                if (!hasFailed) {
-                    hasFailed = true;
-                    fallbackToGoogleDriveDirect();
-                }
+            var sourceEl = videoEl.querySelector('source');
+            sourceEl.addEventListener('error', function() {
+                if (!hasFailed) { hasFailed = true; fallback(); }
             });
 
             var timeoutId = setTimeout(function() {
-                if (!videoLoaded && !hasFailed) {
-                    hasFailed = true;
-                    fallbackToGoogleDriveDirect();
-                }
+                if (!videoLoaded && !hasFailed) { hasFailed = true; fallback(); }
             }, 1200);
 
-            function fallbackToGoogleDriveDirect() {
+            function fallback() {
                 clearTimeout(timeoutId);
-
-                if (videoEl && videoEl.parentNode === wrapper) {
-                    wrapper.removeChild(videoEl);
-                }
+                if (videoEl && videoEl.parentNode === wrapper) wrapper.removeChild(videoEl);
 
                 if (isGoogleDrive && fileId) {
+                    var driveVideo = createVideo('https://drive.google.com/uc?export=download&id=' + fileId, true);
+                    wrapper.appendChild(driveVideo);
 
-                    var driveVideoEl = document.createElement('video');
-                    driveVideoEl.setAttribute('autoplay', 'true');
-                    driveVideoEl.setAttribute('muted', 'true');
-                    driveVideoEl.setAttribute('loop', 'true');
-                    driveVideoEl.setAttribute('playsinline', 'true');
-                    driveVideoEl.setAttribute('crossorigin', 'anonymous');
-                    driveVideoEl.style.width = '100%';
-                    driveVideoEl.style.height = '100%';
-                    driveVideoEl.style.position = 'absolute';
-                    driveVideoEl.style.top = '0';
-                    driveVideoEl.style.left = '0';
-                    driveVideoEl.style.objectFit = 'cover';
-                    driveVideoEl.style.opacity = '0';
-                    driveVideoEl.style.transition = 'opacity 0.4s ease';
-                    driveVideoEl.muted = true;
-
-                    var driveSource = document.createElement('source');
-                    driveSource.setAttribute('src', 'https://drive.google.com/uc?export=download&id=' + fileId);
-                    driveSource.setAttribute('type', 'video/mp4');
-                    driveVideoEl.appendChild(driveSource);
-                    wrapper.appendChild(driveVideoEl);
-
-                    driveVideoEl.addEventListener('playing', function() {
+                    driveVideo.addEventListener('playing', function() {
                         videoLoaded = true;
-                        driveVideoEl.style.opacity = '1';
-                        cover.style.transition = 'opacity 0.4s ease';
-                        cover.style.opacity = '0';
-                        setTimeout(function() {
-                            if (cover && cover.parentNode === wrapper) {
-                                wrapper.removeChild(cover);
-                            }
-                        }, 400);
+                        fadeOutCover(driveVideo, cover, wrapper);
                     });
 
                     setTimeout(function() {
                         if (!videoLoaded) {
-                            if (driveVideoEl && driveVideoEl.parentNode === wrapper) {
-                                wrapper.removeChild(driveVideoEl);
-                            }
+                            if (driveVideo && driveVideo.parentNode === wrapper) wrapper.removeChild(driveVideo);
                             loadIframeFallback(wrapper, cover, videoUrl);
                         }
                     }, 2000);
@@ -170,46 +120,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function loadIframeFallback(wrapper, cover, videoUrl) {
         var iframe = document.createElement('iframe');
-        iframe.setAttribute('src', videoUrl + "?autoplay=1");
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allow', 'autoplay; encrypted-media');
-        iframe.setAttribute('allowfullscreen', 'true');
-        iframe.style.opacity = '0';
-        iframe.style.transition = 'opacity 0.4s ease';
-
+        iframe.src = videoUrl + "?autoplay=1";
+        iframe.frameBorder = "0";
+        iframe.allow = "autoplay; encrypted-media";
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'opacity:0;transition:opacity 0.4s ease;';
         wrapper.appendChild(iframe);
 
         var fallbackTimeout = setTimeout(function() {
-            if (iframe.style.opacity !== '1') {
-                iframe.style.opacity = '1';
-                cover.style.transition = 'opacity 0.4s ease';
-                cover.style.opacity = '0';
-                setTimeout(function() {
-                    if (cover && cover.parentNode === wrapper) {
-                        wrapper.removeChild(cover);
-                    }
-                }, 400);
-            }
+            if (iframe.style.opacity !== '1') fadeOutCover(iframe, cover, wrapper);
         }, 3000);
 
         iframe.onload = function () {
             clearTimeout(fallbackTimeout);
-            iframe.style.opacity = '1';
-            cover.style.transition = 'opacity 0.4s ease';
-            cover.style.opacity = '0';
-            setTimeout(function () {
-                if (cover && cover.parentNode === wrapper) {
-                    wrapper.removeChild(cover);
-                }
-            }, 400);
+            fadeOutCover(iframe, cover, wrapper);
         };
     }
 
     document.querySelectorAll('.swiper-slide').forEach(function (slide) {
-        var videoUrl = slide.getAttribute('data-video-url');
+        var url = slide.getAttribute('data-video-url');
         var cover = slide.querySelector('.video-cover');
-        if (cover && videoUrl) {
-            initCoverBackground(cover, videoUrl);
+        if (cover && url) {
+            initCoverBackground(cover, url);
             bindCoverClick(cover);
         }
     });
@@ -218,28 +150,18 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.swiper-slide').forEach(function (slide) {
             var wrapper = slide.querySelector('.video-wrapper');
             if (wrapper && (wrapper.querySelector('iframe') || wrapper.querySelector('video'))) {
-                var videoUrl = slide.getAttribute('data-video-url');
-                var videoId = videoUrl.includes('1FcMQ') ? 'gallery.video1' :
-                    videoUrl.includes('15uFH') ? 'gallery.video2' :
-                        videoUrl.includes('Vi9ph') ? 'gallery.video3' :
-                            videoUrl.includes('8jtx8') ? 'gallery.video4' : 'gallery.video5';
-
-                var titleText = videoId === 'gallery.video1' ? 'Şengül Medya — Sinematik Düğün Hikayesi' :
-                    videoId === 'gallery.video2' ? 'Şengül Medya — Profesyonel Dış Çekim' :
-                        videoId === 'gallery.video3' ? 'Şengül Medya — Gelin Çıkarma & Eğlence' :
-                            videoId === 'gallery.video4' ? 'Şengül Medya — Drone ile Havadan Çekimler' : 'Şengül Medya — Reklam & Mekan Tanıtımı';
+                var url = slide.getAttribute('data-video-url');
+                var vData = getVideoData(url);
 
                 wrapper.innerHTML = `
                     <div class="video-cover">
-                        <div class="play-btn-circle">
-                            <i class="fa-solid fa-play"></i>
-                        </div>
-                        <span class="video-cover-title" data-i18n="${videoId}">${titleText}</span>
+                        <div class="play-btn-circle"><i class="fa-solid fa-play"></i></div>
+                        <span class="video-cover-title" data-i18n="${vData.info.id}">${vData.info.title}</span>
                     </div>
                 `;
 
                 var newCover = wrapper.querySelector('.video-cover');
-                initCoverBackground(newCover, videoUrl);
+                initCoverBackground(newCover, url);
                 bindCoverClick(newCover);
             }
         });
